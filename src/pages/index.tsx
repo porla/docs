@@ -22,7 +22,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className={"button button--outline button--secondary button--md"}
-            to="/intro"
+            to="/introduction"
           >
             Learn more
           </Link>
