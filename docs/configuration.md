@@ -4,18 +4,11 @@ sidebar_position: 3
 
 # Configuration
 
-Porla uses [TOML](https://toml.io/en/) as the format of choice for configuration.
+Porla can be configured in various ways - either via environment variables,
+command line arguments, or a configuration file.
 
-By default, Porla checks the following places for its config (in the order
-specified),
-
- * The `--config /some/path/porla.toml` command line argument.
- * The `PORLA_CONFIG` environment variable. This variable should contain the TOML
-   config as its value. Can be used to specify inline config in a `docker-compose`
-   file, for example.
- * The `PORLA_CONFIG_FILE` environment variable. Should point to a config file.
- * If a `porla.toml` config file exists in the current working directory, that file
-   is read.
+Using a configuration file is recommended since it has support for the most
+options.
 
 ## Examples
 
@@ -31,15 +24,25 @@ services:
   porla:
     image: ghcr.io/porla/porla
     environment:
-      PORLA_CONFIG: |
-        listen_interfaces = [
-          ["0.0.0.0", 6881]
-        ]
+      PORLA_DB: ":memory:"
 ```
 
-## Reference
+## TOML reference
 
-### `libtorrent`
+### `db`
+
+The `db` key specifies a file (which will be created if it does not exist)
+where Porla will store all of its state.
+
+If `db` is set to `:memory:`, Porla will run with a SQLite in-memory database
+which can be useful for debugging. However, while torrent data is saved to disk,
+no other state is saved.
+
+```toml
+db = "/var/lib/porla/porla.sqlite"
+```
+
+### `session_settings`
 
 :::caution
 
@@ -48,14 +51,14 @@ also easy to break stuff.
 
 :::
 
-Use the `libtorrent` section to directly set libtorrent settings. You can use
+Use the `session_settings` section to directly set libtorrent settings. You can use
 the `base` key to set a base setting layer.
 
 Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
 for detailed information for each setting.
 
 ```toml
-[libtorrent]
+[session_settings]
 base = "default" # (or "high_performance", or "min_memory_usage")
 close_redundant_connections = false
 ```
@@ -90,23 +93,9 @@ peer_connections = true
 tracker_connections = true
 ```
 
-### `sqlite`
+### `timer`
 
-The `sqlite` section lets you configure SQLite. For now, there is only one option
-(`file`), but more may be added in the future.
-
-If `file` is set to `:memory:`, Porla will run with a SQLite in-memory database
-which can be useful for debugging. However, while torrent data is saved to disk,
-no other state is saved.
-
-```toml
-[sqlite]
-file = "/var/lib/porla/porla.sqlite"
-```
-
-### `timers`
-
-The `timers` section specifies the interval for various timers in Porla. The
+The `timer` section specifies the interval for various timers in Porla. The
 interval is in milliseconds, and a value of 0 (or less) will disable the timer.
 
 While disabling timers is supported, it will have an effect on how Porla operates.
@@ -115,7 +104,7 @@ For example, disabling the `torrent_updates` timer (by setting it to 0) will
 also disable the `state_update` event in the events API.
 
 ```toml
-[timers]
+[timer]
 dht_stats = 3000
 session_stats = 3000
 torrent_updates = 1000
