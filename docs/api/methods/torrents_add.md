@@ -1,7 +1,4 @@
----
-sidebar_position: 1
----
-
 # `torrents.add`
 
+Adds a torrent to Porla.
 

@@ -10,7 +10,7 @@ for more details about the standard and how it works.
 
 ## Endpoint
 
-The event endpoint in Porla is point a client to `http://localhost:1337/api/events`.
+The event endpoint in Porla is point a client to `http://localhost:1337/api/v1/events`.
 Adjust the port for your specific configuration.
 
 ## Monitoring using `curl`
@@ -18,7 +18,7 @@ Adjust the port for your specific configuration.
 You can use `curl` in unbuffered mode (`-N`) to listen on all events in Porla.
 
 ```sh
-curl -N localhost:1337/api/events
+curl -N localhost:1337/api/v1/events
 ```
 
 ## Types
