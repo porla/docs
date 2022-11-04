@@ -7,8 +7,8 @@ sidebar_position: 3
 Porla can be configured in various ways - either via environment variables,
 command line arguments, or a configuration file.
 
-Using a configuration file is recommended since it has support for the most
-options.
+Using a configuration file is recommended since it has support for all the
+options available.
 
 ## Examples
 
@@ -77,6 +77,28 @@ listen_interfaces = [
   ["0.0.0.0", 6881],
   ["eth1",    6882]
 ]
+```
+
+### `presets`
+
+Presets is a powerful way of applying settings to a torrent. Any preset you add
+to the configuration can be references in the `preset` key when calling the
+`torrents.add` RPC method.
+
+The special `default` preset is applied to all added torrents. Other presets
+will inherit the keys specified in the default preset. _All preset keys are optional_.
+
+```toml
+[presets.default] # example of all the 
+download_limit = 20000
+max_connections = 100
+max_uploads = 200
+save_path = "/dl/default"
+storage_mode = "allocate"
+upload_limit = -1
+
+[presets.other-1] # override the save path from the default preset
+save_path = "/dl/other"
 ```
 
 ### `proxy`
