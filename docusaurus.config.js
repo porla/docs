@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Porla',
-  tagline: 'A high performance BitTorrent client for seedboxes and servers',
+  tagline: 'A high performance BitTorrent client for seedboxes and servers.',
   url: 'https://porla.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -62,6 +62,12 @@ const config = {
             docId: 'introduction',
             position: 'left',
             label: 'Intro',
+          },
+          {
+            type: 'doc',
+            docId: 'install/docker',
+            position: 'left',
+            label: 'Install',
           },
           {
             href: 'https://github.com/porla/porla',

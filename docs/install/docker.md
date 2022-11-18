@@ -17,7 +17,7 @@ To give Porla a spin, just run the Docker image.
 $ docker run -p 1337:1337 ghcr.io/porla/porla
 ```
 
-Now you can access Porla in your browser at http://localhost:1337/.
+Next, see [the web UI section](../webui) to learn how to set up a web UI.
 
 ## Mounting volumes
 

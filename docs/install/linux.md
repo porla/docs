@@ -7,8 +7,12 @@ sidebar_position: 1
 Porla builds native linux-amd64 binaries for all releases which makes it easy
 to run it in Linux environments using something like Systemd.
 
-To get started, just download Porla and put it somewhere safe, like `/usr/bin`.
+## Get started
 
+* Download the [latest release binary](https://github.com/porla/web/releases/latest).
+* Either run the binary directly, or see below on how to run it as a service.
+
+Next, see [the web UI section](../webui) to learn how to set up a web UI.
 
 ## Example Systemd unit
 
