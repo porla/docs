@@ -42,6 +42,20 @@ no other state is saved.
 db = "/var/lib/porla/porla.sqlite"
 ```
 
+### `secret_key`
+
+_Setting a `secret_key` is highly encouraged_.
+
+Porla uses the secret key to sign various pieces of data. For example, all JWTs
+are signed with this secret key. If no secret key is defined, Porla will generate
+a new one every startup. This means old JWTs becomes invalid.
+
+Use `porla key:generate` to generate a cryptographically secure secret key.
+
+```toml
+secret_key = "<generated secret key>"
+```
+
 ### `session_settings`
 
 :::caution
