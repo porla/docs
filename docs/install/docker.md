@@ -17,8 +17,6 @@ To give Porla a spin, just run the Docker image.
 $ docker run -p 1337:1337 ghcr.io/porla/porla
 ```
 
-Next, see [the web UI section](../webui) to learn how to set up a web UI.
-
 ## Mounting volumes
 
 By default, Porla stores its data at `/var/lib/porla`. It is very recommended

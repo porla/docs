@@ -12,8 +12,6 @@ to run it in Linux environments using something like Systemd.
 * Download the [latest release binary](https://github.com/porla/web/releases/latest).
 * Either run the binary directly, or see below on how to run it as a service.
 
-Next, see [the web UI section](../webui) to learn how to set up a web UI.
-
 ## Example Systemd unit
 
 ```
