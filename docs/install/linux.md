@@ -9,7 +9,7 @@ to run it in Linux environments using something like Systemd.
 
 ## Get started
 
-* Download the [latest release binary](https://github.com/porla/web/releases/latest).
+* Download the [latest release binary](https://github.com/porla/porla/releases/latest/download/porla).
 * Either run the binary directly, or see below on how to run it as a service.
 
 ## Example Systemd unit
