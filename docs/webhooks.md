@@ -55,3 +55,60 @@ local torrent = std.extVar('torrent');
 }
 """
 ```
+
+## Available variables
+
+These are the available variables that you can get through the `std.extVar`
+function.
+
+### `event_name`
+
+A string with the name of the event that is run. Corresponds to the event in
+the `on` array of the configuration. One of,
+
+ * `torrent_added`
+ * `torrent_finished`
+ * `torrent_paused`
+ * `torrent_resumed`
+ * `torrent_removed`
+
+#### Example
+
+```jsonnet
+local event = std.extVar('event_name');
+
+{
+  porla_event: event
+}
+```
+
+### `torrent`
+
+:::info
+
+The `torrent_removed` event only contains the `info_hash` property on the `torrent`
+object.
+
+:::
+
+An object with various properties for the torrent that the event is currently
+running for. Available properties are,
+
+ * `info_hash`
+ * `name`
+ * `progress`
+ * `save_path`
+ * `total`
+ * `total_done`
+ * `total_wanted`
+
+#### Example
+
+ ```jsonnet
+local torrent = std.extVar('torrent');
+
+{
+  info_hash_v1: torrent.info_hash[0],
+  torrent_name: torrent.name
+}
+ ```
