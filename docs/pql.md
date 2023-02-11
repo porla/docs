@@ -7,6 +7,13 @@ sidebar_position: 11
 PQL (short for Porla Query Language) is a simple query language built into
 Porla that makes it easy to query torrents.
 
+## Examples
+
+ * `name contains "ubuntu"` - all torrents which name contains _ubuntu_.
+ * `is:seeding and age > 1w` - torrents that are seeding and also added more
+   than a week ago.
+ * `is:downloading` - torrents that are currently downloading.
+
 ## Types
 
 There are three main types - `STRING`, `FLOAT` and `INT`.
@@ -62,6 +69,16 @@ size > 1gb
  * `d` - days. Multiplies the value with 60 * 60 * 24.
  * `w` - weeks. Multiplies the value with 60 * 60 * 24 * 7.
 
+## Flags
+
+You can use `is:` to check if a torrent has a specific flag or state set. For
+example, if it is seeding or paused.
+
+ * `is:downloading`
+ * `is:finished`
+ * `is:moving`
+ * `is:paused`
+ * `is:seeding`
 
 ## Fields
 
