@@ -3,10 +3,27 @@
 Lists torrents in Porla. This method uses pagination in order to support cases
 where large amounts of torrents are in the session.
 
+You can (optionally) pass various filters to reduce and filter the result.
+
 ## Request
 
 ```json
 {
+  // (Optional) filters to apply to the listing
+  "filters": {
+    // Only return torrents in this specific category
+    "category": "some-category",
+
+    // Only return torrents that match this PQL query
+    "query": "ratio > 1.0",
+
+    // Only return torrents in this save path
+    "save_path": "/dl",
+
+    // Only return torrents that has this tag
+    "tags": "foo"
+  },
+
   // A zero based index of the page to fetch. Defaults to 0.
   "page": 0,
 
@@ -104,8 +121,10 @@ where large amounts of torrents are in the session.
     }
   ],
 
-  // The total amount of torrents in the session. This can be used to determine
-  // the amount of pages, etc.
-  "torrents_total": 45007
+  // Total amount of torrents filtered
+  "total_torrents": 1800,
+
+  // The total amount of torrents in the session, regardless of filters
+  "torrents_total_unfiltered": 45007
 }
 ```
