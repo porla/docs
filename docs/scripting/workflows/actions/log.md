@@ -7,6 +7,10 @@ The `Log` action prins a log message to the log output.
  * `message` - a string (or function taking a `context` parameter) that returns
    the message to log.
 
+## Outputs
+
+ * `rendered_message` - the message that was logged.
+
 ## Example usage
 
 ```lua

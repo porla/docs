@@ -9,6 +9,12 @@ The workflow will wait until the program has exited before it continues.
  * `file` - a string pointing to the binary to execute.
  * `args` - a string array with arguments to pass to the executable.
 
+## Outputs
+
+ * `exit_code` - the exit code of the process that was launched.
+ * `std_err` - the output which was written to _stderr_.
+ * `std_out` - the output which was written to _stdout_.
+
 ## Example usage
 
 ```lua
