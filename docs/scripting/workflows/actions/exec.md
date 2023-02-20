@@ -7,7 +7,9 @@ The workflow will wait until the program has exited before it continues.
 ## Inputs
 
  * `file` - a string pointing to the binary to execute.
- * `args` - a string array with arguments to pass to the executable.
+ * `args` - _(optional)_ a string array with arguments to pass to the executable.
+ * `std_in` - _(optional)_ a string (or function taking a `context` parameter)
+   that returns the data to write to the process standard input.
 
 ## Outputs
 

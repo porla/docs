@@ -4,8 +4,28 @@ sidebar_position: 10
 
 # Basics
 
-Workflows are a sequence of actions that run in order, configured by the user
-and executed asynchronously. Each action can have inputs and outputs.
+Workflows are a sequence of actions that are triggered by events, configured by
+the user and executed asynchronously. Each action can have inputs and outputs.
+
+The simplest workflow has no actions and does nothing.
+
+```lua title="workflows/simple-workflow.lua"
+local Workflow = require "porla.Workflow"
+
+return Workflow:new{
+  on      = "TorrentAdded"
+  actions = {}
+}
+```
+
+## Events
+
+There are a few events you can use that will trigger a workflow.
+
+ * `TorrentAdded` - the workflow will run for each torrent that is added to the
+   session.
+ * `TorrentFinished` - the workflow will run for each torrent that finishes
+   downloading.
 
 ## Inputs
 
