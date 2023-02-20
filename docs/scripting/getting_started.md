@@ -11,3 +11,8 @@ liking.
 Using Lua scripts, users can write workflows which are inspired by GitHub
 actions and makes it possible to set up many kinds of user specific
 integrations.
+
+## Getting started
+
+To get started, make sure to set the [`workflow_dir`](../configuration.md#workflow_dir) setting in your `porla.toml`
+configuration file.

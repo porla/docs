@@ -145,3 +145,12 @@ dht_stats = 3000
 session_stats = 3000
 torrent_updates = 1000
 ```
+
+### `workflow_dir`
+
+The `workflow_dir` key specifies the directory from where Porla will load Lua
+based workflows.
+
+```toml
+workflow_dir = "/usr/lib/porla/workflows"
+```
