@@ -15,5 +15,5 @@ integrations.
 ## Getting started
 
 To get started, make sure to set the [`workflow_dir`](../configuration.md#workflow_dir)
-setting in your `porla.toml` configuration file. Porla will load each `.lua` in that
-directory as a workflow.
+setting in your `porla.toml` configuration file. Porla will load each `.lua` file
+in that directory as a workflow.
