@@ -39,7 +39,7 @@ export default function Home(): JSX.Element {
       description="A high performance BitTorrent client">
       <HomepageHeader />
       <main style={{textAlign: "center"}}>
-        <img src="/img/porla-wnd.png" style={{maxWidth: "1024px"}} />
+        <img src="/img/porla-torrents-list.png" style={{maxWidth: "1024px"}} />
       </main>
     </Layout>
   );
