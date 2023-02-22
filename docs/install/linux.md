@@ -14,7 +14,7 @@ to run it in Linux environments using something like Systemd.
 
 ## Example Systemd unit
 
-```
+```systemd
 [Unit]
 Description=porla
 

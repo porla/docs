@@ -39,10 +39,7 @@ const config = {
           editUrl: 'https://github.com/porla/docs',
           routeBasePath: '/'
         },
-        blog: false,
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
+        blog: false
       }),
     ],
   ],
@@ -58,16 +55,20 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'introduction',
+            to: '/',
             position: 'left',
-            label: 'Intro',
+            label: 'Home',
+            activeBaseRegex: '^/$'
           },
           {
-            type: 'doc',
-            docId: 'install/docker',
+            to: 'scripting/getting_started',
             position: 'left',
-            label: 'Install',
+            label: 'Scripting',
+          },
+          {
+            to: 'api/auth',
+            position: 'left',
+            label: 'API',
           },
           {
             href: 'https://github.com/porla/porla',
@@ -79,7 +80,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['lua','toml'],
+        additionalLanguages: ['lua', 'systemd', 'toml'],
       },
     }),
 };
