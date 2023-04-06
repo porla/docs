@@ -24,7 +24,21 @@ services:
   porla:
     image: ghcr.io/porla/porla
     environment:
-      PORLA_DB: ":memory:"
+      - PORLA_CONFIG_FILE=/var/lib/porla/config.toml # path to a TOML config file with additional configuration.
+      - PORLA_DB=/var/lib/porla/porla.sqlite # path a file (which does not need to exist) that porla will use to store its state.
+      - PORLA_HTTP_AUTH_DISABLED_YES_REALLY=false # set to true to disable HTTP JWT authentication (not recommended).
+      - PORLA_HTTP_BASE_PATH=/ # set to a path where the HTTP parts of Porla will be served. Defaults to /.
+      - PORLA_HTTP_HOST=0.0.0.0 # set to an IP address which to bind the HTTP server. Defaults to 127.0.0.1.
+      - PORLA_HTTP_METRICS_ENABLED=true # set to true/false to enable or disable the metrics endpoint. Defaults to true.
+      - PORLA_HTTP_PORT=1337 # set to the port to use for the HTTP server. Defaults to 1337.
+      - PORLA_LOG_LEVEL=debug # the minimum log level to use. Valid values are trace, debug, info, warning, error, fatal. Defaults to info.
+      - PORLA_SESSION_SETTINGS_BASE="default" # the libtorrent settings base to use for session settings. Valid values are default, min_memory_usage, high_performance_seed. Defaults to default.
+      - PORLA_STATE_DIR=/var/lib/porla # a path to a directory where Porla will store its state.
+      - PORLA_TIMER_DHT_STATS=5000 # the interval in milliseconds to push DHT stats. Defaults to 5000.
+      - PORLA_TIMER_SESSION_STATS=5000 # the interval in milliseconds to push session stats. Defaults to 5000.
+      - PORLA_TIMER_TORRENT_UPDATES=1000 # the interval in milliseconds to push torrent state updates. Defaults to 1000.
+      - PORLA_WORKFLOW_DIR=/var/lib/porla/workflows # the path to where Porla will load user workflows from.
+
 ```
 
 ## TOML reference
@@ -51,6 +65,7 @@ are signed with this secret key. If no secret key is defined, Porla will generat
 a new one every startup. This means old JWTs becomes invalid.
 
 Use `porla key:generate` to generate a cryptographically secure secret key.
+Use `sudo docker exec -it <CONTAINER_NAME> porla key:generate` for docker installations.
 
 ```toml
 secret_key = "<generated secret key>"
@@ -104,12 +119,16 @@ will inherit the keys specified in the default preset. _All preset keys are opti
 
 ```toml
 [presets.default] # example of all the 
-download_limit = 20000
+download_limit = 20000 # in bytes per second per torrent in this preset
 max_connections = 100
 max_uploads = 200
 save_path = "/dl/default"
-storage_mode = "allocate"
-upload_limit = -1
+storage_mode = "allocate" # (or "sparse")
+upload_limit = -1 # -1 means unlimited
+category = "default"
+tags = ["tag1", "tag2"] # Array of tag strings
+
+
 
 [presets.other-1] # override the save path from the default preset
 save_path = "/dl/other"
