@@ -42,6 +42,7 @@ version: '3'
 services:
   porla:
     image: ghcr.io/porla/porla
+    #user : "1000:1000" # Uncomment this line if you want run Porla with a different PUID:PGID
     ports:
       - "1337:1337"
     restart: unless-stopped
