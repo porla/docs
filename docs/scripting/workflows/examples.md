@@ -13,11 +13,12 @@ Sends a Discord message when a torrent is added to Porla. Using the Discord
 action requires you to set up a webhook url.
 
 ```lua title="workflows/discord-notifications.lua"
-local Workflow = require "porla.Workflow"
-local Discord  = require "porla.actions.PushDiscord"
+local Workflow     = require "porla.Workflow"
+local Discord      = require "porla.actions.PushDiscord"
+local TorrentAdded = require "porla.triggers.TorrentAdded"
 
 return Workflow:new{
-  on      = "TorrentAdded",
+  on      = TorrentAdded:new{},
   actions = {
     Discord:new{
       url     = "", -- set your Discord webhook url here
@@ -32,22 +33,23 @@ return Workflow:new{
 ## Reannounce torrents from _autobrr_
 
 If you use [autobrr](https://autobrr.com) for racing, you may find youself
-early in the swarm. By using the reannounce action, you can force reannounce an
-added torrent until it succeeds.
+early in the swarm. By using the torrent reannounce action, you can force
+reannounce an added torrent until it succeeds.
 
 This workflow only runs for torrents in the _racing_ category.
 
 ```lua title="workflows/racing.lua"
-local Workflow   = require "porla.Workflow"
-local Reannounce = require "porla.actions.TorrentReannounce"
+local Workflow          = require "porla.Workflow"
+local TorrentReannounce = require "porla.actions.TorrentReannounce"
+local TorrentAdded      = require "porla.triggers.TorrentAdded"
 
 return Workflow:new{
-  on        = "TorrentAdded",
-  condition = function(ctx)
+  on      = TorrentAdded:new{},
+  filter  = function(ctx)
     return ctx.torrent.category == "racing"
   end,
   actions = {
-    Reannounce:new{}
+    TorrentReannounce:new{}
   }
 }
 ```
@@ -63,22 +65,20 @@ Remember to replace `<host>` and `<token>` with values that makes sense for
 your setup.
 
 ```lua title="workflows/plex.lua"
-local Workflow    = require "porla.Workflow"
-local Exec        = require "porla.actions.Exec"
-local Log         = require "porla.actions.Log"
-local TorrentMove = require "porla.actions.TorrentMove"
+local Workflow        = require "porla.Workflow"
+local HttpRequest     = require "porla.actions.HttpRequest"
+local Log             = require "porla.actions.Log"
+local TorrentMove     = require "porla.actions.TorrentMove"
+local TorrentFinished = require "porla.triggers.TorrentFinished"
 
 return Workflow:new{
-  on      = "TorrentFinished",
+  on      = TorrentFinished:new{},
   actions = {
     TorrentMove:new{
       path = "/plex/movies"
     },
-    Exec:new{
-      file = "/usr/bin/curl",
-      args = {
-        "http://<host>:32400/library/sections/all/refresh?X-Plex-Token=<token>"
-      }
+    HttpRequest:new{
+      url = "http://<host>:32400/library/sections/all/refresh?X-Plex-Token=<token>"
     },
     Log:new{
       message = "Plex libraries refreshed"
@@ -87,24 +87,22 @@ return Workflow:new{
 }
 ```
 
-Alternatively, you can use the `TorrentMoved` event and check the save path.
+Alternatively, you can use the `TorrentMoved` trigger and check the save path.
 
 ```lua title="workflows/plex-alt.lua"
-local Workflow    = require "porla.Workflow"
-local Exec        = require "porla.actions.Exec"
-local Log         = require "porla.actions.Log"
+local Workflow     = require "porla.Workflow"
+local HttpRequest  = require "porla.actions.HttpRequest"
+local Log          = require "porla.actions.Log"
+local TorrentMoved = require "porla.triggers.TorrentMoved"
 
 return Workflow:new{
-  on        = "TorrentMoved",
-  condition = function(ctx)
+  on      = TorrentMoved:new{},
+  filter  = function(ctx)
     return ctx.torrent.save_path == "/plex/movies"
   end,
-  actions   = {
-    Exec:new{
-      file = "/usr/bin/curl",
-      args = {
-        "http://<host>:32400/library/sections/all/refresh?X-Plex-Token=<token>"
-      }
+  actions = {
+    HttpRequest:new{
+      url = "http://<host>:32400/library/sections/all/refresh?X-Plex-Token=<token>"
     },
     Log:new{
       message = "Plex libraries refreshed"
