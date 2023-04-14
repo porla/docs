@@ -98,7 +98,7 @@ reaches some state, others (such as the cron trigger) will run on its own.
    torrent that is added to the session.
  * [_TorrentFinished_](triggers/torrent_finished.md) - the workflow will run
    for each torrent that finishes downloading.
- * [_TorrentMoved_](triggers/torrent_moved.md.md) - the workflow will run for
+ * [_TorrentMoved_](triggers/torrent_moved.md) - the workflow will run for
    each torrent that is moved.
 
 ## Actions
