@@ -29,7 +29,7 @@ local HttpRequest = require "porla.actions.HttpRequest"
 
 ```lua
 HttpRequest:new{
-  url = "https://some-where.example.com/v1/thing"
+  url = "https://some-where.example.com/v1/thing",
   headers = {
     ["Content-Type"] = "application/json",
     ["X-API-Key"] = "<some API key>"
