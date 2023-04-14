@@ -11,20 +11,18 @@ The `Log` action prins a log message to the log output.
 
  * `rendered_message` - the message that was logged.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow = require "porla.Workflow"
-local Log      = require "porla.actions.Log"
+local Log = require "porla.actions.Log"
+```
 
-return Workflow:new{
-  on      = "TorrentAdded",
-  actions = {
-    Log:new{
-      message = function(ctx)
-        return string.format("Torrent %s added", ctx.torrent.name)
-      end
-    }
-  }
+### Example
+
+```lua
+Log:new{
+  message = function(ctx)
+    return string.format("Torrent %s added", ctx.torrent.name)
+  end
 }
 ```

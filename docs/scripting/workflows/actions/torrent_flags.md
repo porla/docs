@@ -1,8 +1,8 @@
 # `TorrentFlags`
 
-The `TorrentFlags` action can set or unset various libtorrent flags. It's an
-advanced action and should be used with care, but is useful for toggling the
-_auto managed_ state on torrents for example.
+The `TorrentFlags` action can set or unset various libtorrent flags on a
+per-torrent basis. It's an advanced action and should be used with care, but is
+useful for toggling the _auto managed_ state on torrents for example.
 
 ## Inputs
 
@@ -21,22 +21,18 @@ Supported flags are,
  * `disable_pex`
  * `sequential_download`
 
-## Example usage
-
-The following will make set all added torrents to _sequential download_.
+## Usage
 
 ```lua
-local Workflow     = require "porla.Workflow"
 local TorrentFlags = require "porla.actions.TorrentFlags"
+```
 
-return Workflow:new{
-  on      = "TorrentAdded",
-  actions = {
-    TorrentFlags:new{
-      set = {
-        "sequential_download"
-      }
-    }
+### Example
+
+```lua
+TorrentFlags:new{
+  set = {
+    "sequential_download"
   }
 }
 ```

@@ -12,18 +12,16 @@ Sleep action will be delayed.
  * `timeout` - an integer representing the time in milliceconds to delay
    execution.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow = require "porla.Workflow"
-local Sleep    = require "porla.actions.Sleep"
+local Sleep = require "porla.actions.Sleep"
+```
 
-return Workflow:new{
-  on      = "TorrentAdded",
-  actions = {
-    Sleep:new{
-      timeout = 1500
-    }
-  }
+### Example
+
+```lua
+Sleep:new{
+  timeout = 1500
 }
 ```

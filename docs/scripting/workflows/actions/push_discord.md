@@ -11,21 +11,19 @@ In order to use this action, set up a webhook integration and copy the URL.
  * `message` - a string (or function taking a `context` parameter) that returns
    the message to send.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow    = require "porla.Workflow"
 local PushDiscord = require "porla.actions.PushDiscord"
+```
 
-return Workflow:new{
-  on      = "TorrentAdded",
-  actions = {
-    PushDiscord:new{
-      url     = "<discord webhook url>",
-      message = function(ctx)
-        return string.format("Torrent %s added", ctx.torrent.name)
-      end
-    }
-  }
+### Example
+
+```lua
+PushDiscord:new{
+  url     = "<discord webhook url>",
+  message = function(ctx)
+    return string.format("Torrent %s added", ctx.torrent.name)
+  end
 }
 ```

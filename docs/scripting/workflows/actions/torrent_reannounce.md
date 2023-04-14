@@ -17,22 +17,17 @@ endpoint.
    attempts. The first attempt will always run immediately and subsequent
    attempts will be delayed.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow          = require "porla.Workflow"
 local TorrentReannounce = require "porla.actions.TorrentReannounce"
+```
 
-return Workflow:new{
-  on        = "TorrentAdded",
-  condition = function(ctx)
-    return ctx.torrent.category == "racing"
-  end,
-  actions   = {
-    TorrentReannounce:new{
-      max_retries = 50,
-      timeout     = 5
-    }
-  }
+### Example
+
+```lua
+TorrentReannounce:new{
+  max_retries = 50,
+  timeout     = 5
 }
 ```

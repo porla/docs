@@ -17,21 +17,19 @@ The workflow will wait until the program has exited before it continues.
  * `std_err` - the output which was written to _stderr_.
  * `std_out` - the output which was written to _stdout_.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow = require "porla.Workflow"
-local Exec     = require "porla.actions.Exec"
+local Exec = require "porla.actions.Exec"
+```
 
-return Workflow:new{
-  on      = "TorrentAdded",
-  actions = {
-    Exec:new{
-      file = "/usr/bin/curl",
-      args = {
-        "https://www.google.com"
-      }
-    }
+### Example
+
+```lua
+Exec:new{
+  file = "/usr/bin/curl",
+  args = {
+    "https://www.google.com"
   }
 }
 ```

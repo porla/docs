@@ -15,16 +15,14 @@ This action makes the most sense if you use the `TorrentFlag` action and unset
 
 _This action has no inputs_.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow     = require "porla.Workflow"
 local TorrentPause = require "porla.actions.TorrentPause"
+```
 
-return Workflow:new{
-  on      = "TorrentFinished",
-  actions = {
-    TorrentPause:new{}
-  }
-}
+### Example
+
+```lua
+TorrentPause:new{}
 ```

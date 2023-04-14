@@ -8,21 +8,19 @@ The `PushNtfy` action pushes a message to a [ntfy.sh](https://ntfy.sh) topic.
  * `message` - a string (or function taking a `context` parameter) that returns
    the message to send.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow = require "porla.Workflow"
 local PushNtfy = require "porla.actions.PushNtfy"
+```
 
-return Workflow:new{
-  on      = "TorrentAdded",
-  actions = {
-    PushNtfy:new{
-      topic   = "some-secret-topic",
-      message = function(ctx)
-        return string.format("Torrent %s added", ctx.torrent.name)
-      end
-    }
-  }
+### Example
+
+```lua
+PushNtfy:new{
+  topic   = "some-secret-topic",
+  message = function(ctx)
+    return string.format("Torrent %s added", ctx.torrent.name)
+  end
 }
 ```

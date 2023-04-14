@@ -8,18 +8,16 @@ well.
  * `remove_files` - a boolean that, if set to true, tells Porla to remove the
    data along with the torrent. _Defaults to false_.
 
-## Example usage
+## Usage
 
 ```lua
-local Workflow      = require "porla.Workflow"
 local TorrentRemove = require "porla.actions.TorrentRemove"
+```
 
-return Workflow:new{
-  on      = "TorrentFinished",
-  actions = {
-    TorrentRemove:new{
-      remove_files = true
-    }
-  }
+### Example
+
+```lua
+TorrentRemove:new{
+  remove_files = true
 }
 ```
