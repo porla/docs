@@ -26,7 +26,6 @@ There are a few events you can use that will trigger a workflow.
    session.
  * `TorrentFinished` - the workflow will run for each torrent that finishes
    downloading.
- * `TorrentMoved` - the workflow will run for each torrent after it is moved.
 
 ## Inputs
 
@@ -54,8 +53,7 @@ and can be accessed by subsequent actions.
 
 Further, each event may set specific context properties - such as the various
 torrent events. These set the `torrent` context, which allows you to query for
-torrent information. The available properties are `name`, `category`, `tags`, 
-`save_path` and `size`.
+torrent information.
 
 For example, accessing the `torrent` context requires you to use a function
 when rendering a log message. This function gets passed the context and should
