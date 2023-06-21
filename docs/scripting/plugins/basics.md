@@ -10,6 +10,11 @@ Porla provides. Plugins can add functionality, modify behavior, etc.
 
 ## Installing plugins
 
+Plugins are installed from the web UI. The plugin management page can be reached
+by clicking the plugin button in the top right of the UI.
+
+### Git
+
 The easiest way to install plugins is via Git. Porla bundles _libgit2_ and uses
 it to fetch plugins as well as keep them up to date. To allow Porla to fetch
 plugins via Git, you need to set the `plugins.allow_git` key to true in the
@@ -19,6 +24,8 @@ plugins via Git, you need to set the `plugins.allow_git` key to true in the
 [plugins]
 allow_git = true
 ```
+
+### Folder
 
 You can also just point to a folder that has a `plugin.lua` file and Porla will
 pick it up as well.
