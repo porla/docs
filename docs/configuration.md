@@ -88,7 +88,7 @@ for detailed information for each setting.
 
 ```toml
 [session_settings]
-base = "default" # (or "high_performance", or "min_memory_usage")
+base = "default" # (or "high_performance_seed", or "min_memory_usage")
 close_redundant_connections = false
 ```
 
