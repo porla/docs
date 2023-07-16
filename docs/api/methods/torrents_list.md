@@ -57,11 +57,19 @@ You can (optionally) pass various filters to reduce and filter the result.
   // The torrents in this page.
   "torrents": [
     {
+      // the number of seconds this torrent has spent in the session and not
+      // been paused
+      "active_duration": 18,
+
       // the total rates for all peers for this torrent. These will usually
       // have better precision than summing the rates from all peers. The rates
       // are given as the number of bytes per second.
       "download_rate": 788,
       "upload_rate": 123,
+
+      // the number of seconds this torrent had all _selected_ files and pieces
+      // downloaded and available to other peers.
+      "finished_duration": 0,
 
       // reflects several of the torrent's flags
       "flags": 129,
@@ -100,8 +108,16 @@ You can (optionally) pass various filters to reduce and filter the result.
       // a seed or finished, this is -1.
       "queue_position": 9,
 
+      // the current ratio of the torrent. this is calculated by doing
+      // all_time_upload / all_time_download
+      "ratio": 0.543,
+
       // the path to the directory where this torrent's files are stored.
       "save_path": "/dl/my-stuff",
+
+      // the number of seconds this torrent had _all_ files and pieces downloaded
+      // and available to other peers.
+      "seeding_duration": 67,
 
       // the total number of bytes the torrent-file represents. Note that this
       // is the number of pieces times the piece size (modulo the last piece
@@ -122,7 +138,7 @@ You can (optionally) pass various filters to reduce and filter the result.
   ],
 
   // Total amount of torrents filtered
-  "total_torrents": 1800,
+  "torrents_total": 1800,
 
   // The total amount of torrents in the session, regardless of filters
   "torrents_total_unfiltered": 45007
