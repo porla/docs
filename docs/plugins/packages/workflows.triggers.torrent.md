@@ -42,7 +42,7 @@ function porla.init()
     })
 
     workflows.add({
-        trigger = finished(),
+        trigger = moved(),
         actions = {
             log("A torrent was moved")
         }
