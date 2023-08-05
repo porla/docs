@@ -74,11 +74,14 @@ size > 1gb
 You can use `is:` to check if a torrent has a specific flag or state set. For
 example, if it is seeding or paused.
 
- * `is:downloading`
- * `is:finished`
- * `is:moving`
- * `is:paused`
- * `is:seeding`
+ * `is:downloading` - The torrent is being downloaded.
+ * `is:finished` - The torrent has finished downloading but does not have all
+   entire torrent. Some pieces or files are filtered and aren't downloaded.
+ * `is:moving` - The torrent is being moved.
+ * `is:paused` - The torrent is paused. This can be true if the torrent is
+   queued for seeding or downloading.
+ * `is:seeding` - The torrent has downloaded all the pieces. This can be true
+   even if the torrent is paused.
 
 ## Fields
 
