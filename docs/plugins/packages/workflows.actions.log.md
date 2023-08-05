@@ -23,7 +23,12 @@ function porla.init()
     workflows.add({
         trigger = added(),
         actions = {
-            log("Hello, world!")
+            log("Hello, world!"),
+            log(
+                function(ctx)
+                    return string.format("Torrent: %s Added", ctx.torrent.name)
+                end
+            )
         }
     })
 end
