@@ -39,7 +39,10 @@ tracker.
 
 ### Function `remove`
 
-Removes the torrent.
+Removes the torrent. This function takes a Lua table with the following keys.
+
+ * `remove_files` - (optional) a boolean that, if set to true, tells Porla to 
+ remove the data along with the torrent. _Defaults to false_.
 
 ### Function `resume`
 
