@@ -12,9 +12,12 @@ Perform HTTP requests from your workflow.
 A function to run inside the `actions` of a workflow. This function takes a Lua
 table with the following keys.
 
+ * `url` - the URL to request.
+ * `headers` - (optional) a Lua table of string keys and values that sets the 
+   HTTP request headers.
  * `body` - (optional) the contents of the HTTP request.
  * `method` - (optional, defaults to `GET`) the HTTP method to use.
- * `url` - the URL to request.
+ 
 
 ### Workflow outputs
 
