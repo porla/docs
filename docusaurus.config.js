@@ -61,14 +61,14 @@ const config = {
             activeBaseRegex: '^/$'
           },
           {
-            to: 'scripting/getting_started',
+            to: 'plugins/getting_started',
             position: 'left',
-            label: 'Scripting',
+            label: 'Plugins',
           },
           {
             to: 'api/auth',
             position: 'left',
-            label: 'API',
+            label: 'HTTP API',
           },
           {
             href: 'https://github.com/porla/porla',
