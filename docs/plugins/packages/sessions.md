@@ -89,6 +89,110 @@ local status = torrent:status()
 
 Represents the `libtorrent::torrent_status` type.
 
+#### Property `active_duration`
+
+#### Property `all_time_download`
+
+#### Property `all_time_upload`
+
+#### Property `announcing_to_dht`
+
+#### Property `announcing_to_lsd`
+
+#### Property `announcing_to_trackers`
+
+#### Property `block_size`
+
+#### Property `connect_candidates`
+
+#### Property `connections_limit`
+
+#### Property `current_tracker`
+
+#### Property `distributed_copies`
+
+#### Property `down_bandwidth_queue`
+
+#### Property `download_payload_rate`
+
+#### Property `download_rate`
+
+#### Property `finished_duration`
+
+#### Property `flags`
+
+#### Property `info_hash`
+
+#### Property `is_finished`
+
+#### Property `is_seeding`
+
+#### Property `handle`
+
+#### Property `has_incoming`
+
+True if there has ever been an incoming connection attempt to this torrent.
+
+#### Property `has_metadata`
+
+#### Property `list_peers`
+
+#### Property `list_seeds`
+
+#### Property `moving_storage`
+
+#### Property `name`
+
+#### Property `need_save_resume`
+
+#### Property `num_complete`
+
+#### Property `num_connections`
+
+#### Property `num_incomplete`
+
+#### Property `num_peers`
+
+#### Property `num_pieces`
+
+#### Property `num_seeds`
+
+#### Property `num_uploads`
+
 #### Property `progress`
 
 The current progress of the torrent.
+
+#### Property `queue_position`
+
+#### Property `save_path`
+
+#### Property `seed_rank`
+
+#### Property `seeding_duration`
+
+#### Property `torrent_file`
+
+#### Property `total`
+
+#### Property `total_done`
+
+#### Property `total_download`
+
+#### Property `total_failed_bytes`
+
+#### Property `total_payload_download`
+
+#### Property `total_payload_upload`
+
+#### Property `total_redundant_bytes`
+
+#### Property `total_upload`
+
+#### Property `up_bandwidth_queue`
+
+#### Property `upload_payload_rate`
+
+#### Property `upload_rate`
+
+#### Property `uploads_limit`
