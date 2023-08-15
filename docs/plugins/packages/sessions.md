@@ -72,6 +72,18 @@ for torrent in session:torrents() do
 end
 ```
 
+### `TorrentClientData`
+
+A Porla specific object that contains category, tags, etc.
+
+#### Property `category`
+
+The category this torrent belongs to.
+
+#### Property `tags`
+
+A list of tags.
+
 ### `TorrentHandle`
 
 A `TorrentHandle` represents a single torrent in a session. It closely wraps
@@ -83,6 +95,16 @@ Returns a `TorrentStatus` object with all the status information for this torren
 
 ```lua
 local status = torrent:status()
+```
+
+#### Function `userdata()`
+
+Returns a `TorrentClientData` object with Porla specific information like category
+and tags.
+
+```lua
+local userdata = torrent:userdata()
+print(userdata.category)
 ```
 
 ### `TorrentStatus`
