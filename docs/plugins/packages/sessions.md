@@ -5,7 +5,7 @@ position: 900
 
 ## Description
 
-`sessions` is the main package used for accessing sessinos and torrents through
+`sessions` is the main package used for accessing sessions and torrents through
 the Lua API. It exports two functions, `get` and `list` that gets a session by
 name or lists all sessions, respectively.
 
@@ -78,11 +78,41 @@ A Porla specific object that contains category, tags, etc.
 
 #### Property `category`
 
-The category this torrent belongs to.
+The category this torrent belongs to. You can get and set this category and it
+will be persisted across restarts.
+
+```lua
+local userdata = torrent:userdata()
+userdata.category = "movies"
+print(userdata.category)
+```
 
 #### Property `tags`
 
-A list of tags.
+A list of tags. You can get and set the list of tags and they will be persisted
+across restarts.
+
+```lua
+local userdata = torrent:userdata()
+
+-- replacing all tags
+userdata.tags = {"foo", "bar"}
+
+-- add a single tag
+userdata.tags:add("baz")
+
+-- remove a single tag
+userdata.tags:erase("baz")
+
+-- print tags
+for _, tag in pairs(userdata.tags) do
+    print(tag)
+end
+
+if userdata.tags.foo then
+    print("torrent is tagged with 'foo'")
+end
+```
 
 ### `TorrentHandle`
 
