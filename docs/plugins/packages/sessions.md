@@ -87,6 +87,10 @@ userdata.category = "movies"
 print(userdata.category)
 ```
 
+#### Property `session`
+
+Gets the name of the session that this torrent belongs to.
+
 #### Property `tags`
 
 A list of tags. You can get and set the list of tags and they will be persisted
