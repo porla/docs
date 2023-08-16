@@ -123,6 +123,83 @@ end
 A `TorrentHandle` represents a single torrent in a session. It closely wraps
 the `libtorrent::torrent_handle` type.
 
+#### Function `clear_error()`
+
+If the torrent is in an error state (i.e. `torrent_status::error` is non-empty),
+this will clear the error and start the torrent again.
+
+#### Function `clear_peers()`
+
+This will disconnect all peers and clear the peer list for this torrent. New
+peers will have to be acquired before resuming, from trackers, DHT or local
+service discovery, for example.
+
+#### Function `download_limit()`
+
+Returns the current download bandwidth limit.
+
+#### Function `flags()`
+
+Returns the flags of this torrent as a table. The key is the name of the flag
+and the value is a boolean which is true or false depending on if the flag is
+set or not.
+
+#### Function `flush_cache()`
+
+#### Function `force_reannounce()`
+
+#### Function `force_recheck()`
+
+#### Function `info_hash()`
+
+#### Function `is_valid()`
+
+#### Function `max_connections()`
+
+#### Function `max_uploads()`
+
+#### Function `move_storage(string path)`
+
+#### Function `pause()`
+
+#### Function `peer_info()`
+
+#### Function `pause()`
+
+#### Function `post_download_queue()`
+
+#### Function `post_file_progress()`
+
+#### Function `post_peer_info()`
+
+#### Function `post_piece_availability()`
+
+#### Function `post_status()`
+
+#### Function `post_trackers()`
+
+#### Function `queue_position()`
+
+#### Function `queue_position_bottom()`
+
+#### Function `queue_position_down()`
+
+#### Function `queue_position_top()`
+
+#### Function `queue_position_up()`
+
+#### Function `resume()`
+
+#### Function `set_download_limit(int limit)`
+
+#### Function `set_flags(table flags)`
+
+#### Function `set_max_connections(int limit)`
+
+#### Function `set_max_uploads(int limit)`
+
+#### Function `set_upload_limit(int limit)`
+
 #### Function `status()`
 
 Returns a `TorrentStatus` object with all the status information for this torrent.
@@ -130,6 +207,12 @@ Returns a `TorrentStatus` object with all the status information for this torren
 ```lua
 local status = torrent:status()
 ```
+
+#### Function `trackers()`
+
+#### Function `torrent_file()`
+
+#### Function `upload_limit()`
 
 #### Function `userdata()`
 
