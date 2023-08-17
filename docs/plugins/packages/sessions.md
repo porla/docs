@@ -118,6 +118,72 @@ if userdata.tags.foo then
 end
 ```
 
+### `TorrentInfo`
+
+A `TorrentInfo` objects represents a torrent file. It closely wraps the
+`libtorrent::torrent_info` type.
+
+#### Function `static from_buffer(string data)`
+
+Parses a `TorrentInfo` object from a buffer. The function is _static_, meaning
+that it does not take a `self` parameter and should be called directly on the type.
+
+It returns a tuple with the first item being the parsed `TorrentInfo` object, and
+the second being an error. If an error occurs, the `TorrentInfo` is null.
+
+```lua
+local buffer = io.open("/path/to/file.torrent"):read("*all")
+local ti, err = TorrentInfo.from_buffer(buffer)
+
+if err then
+    print(err)
+else
+    print(ti:comment())
+end
+```
+
+#### Function `static from_file(string path)`
+
+Same as `from_buffer` but takes a file path instead of a buffer.
+
+#### Function `comment()`
+
+The comment associated with the torrent. If there's no comment, it will return
+an empty string.
+
+#### Function `creator()`
+
+The creator string in the torrent. If there is no creator string it will return
+an empty string.
+
+#### Function `info_hash()`
+
+The info hash of the torrent.
+
+#### Function `name()`
+
+The name of the torrent
+
+#### Function `num_files()`
+
+#### Function `num_pieces()`
+
+The total number of pieces.
+
+#### Function `priv()`
+
+True if this torrent is private. i.e., the client should not advertise itself
+on the trackerless network (the Kademlia DHT) for this torrent
+
+#### Function `trackers()`
+
+#### Function `total_size()`
+
+The total number of bytes the torrent-file represents. Note that this is the
+number of pieces times the piece size (modulo the last piece possibly being
+smaller). With pad files, the total size will be larger than the sum of all
+(regular) file sizes.
+
 ### `TorrentHandle`
 
 A `TorrentHandle` represents a single torrent in a session. It closely wraps
