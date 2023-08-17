@@ -20,23 +20,6 @@ following keys.
 
 Pauses the torrent.
 
-### Function `reannounce`
-
-Reannounces the torrent. This function takes a Lua table with the following
-keys.
-
- * `interval` - (optional) the interval in seconds to wait between each
-   announce. Defaults to 2 seconds.
- * `max_tries` - (optional) the maximum number of attempts to try for a
-   successful announce. Defaults to 5.
- * `tracker_index` - (optional) the index of the tracker to announce to. Defaults
-   to 0, which is the first tracker in the torrent.
-
-:::info
-The reannounce action will always respect the minimum announce interval from the
-tracker.
-:::
-
 ### Function `remove`
 
 Removes the torrent. This function takes a Lua table with the following keys.
@@ -61,8 +44,7 @@ function porla.init()
         actions = {
             torrent.move({
                 path = "/tmp"
-            }),
-            torrent.reannounce()
+            })
         }
     })
 end

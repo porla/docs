@@ -26,7 +26,7 @@ function porla.init()
             log("Hello, world!"),
             log(
                 function(ctx)
-                    return string.format("Torrent: %s Added", ctx.torrent.name)
+                    return string.format("Torrent: %s Added", ctx.torrent:status().name)
                 end
             )
         }
