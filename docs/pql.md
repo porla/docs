@@ -65,9 +65,9 @@ size > 1gb
 
  * `s` - seconds. Does nothing.
  * `m` - minutes. Multiplies the value with 60.
- * `h` - hours. Multiplies the value with 60 * 60.
- * `d` - days. Multiplies the value with 60 * 60 * 24.
- * `w` - weeks. Multiplies the value with 60 * 60 * 24 * 7.
+ * `h` - hours. Multiplies the value with 60 × 60.
+ * `d` - days. Multiplies the value with 60 × 60 × 24.
+ * `w` - weeks. Multiplies the value with 60 × 60 × 24 × 7.
 
 ## Flags
 
