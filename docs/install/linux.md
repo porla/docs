@@ -28,11 +28,9 @@ User=porla
 WantedBy=multi-user.target
 ```
 
-### Notes on alpine
+### Notes on ulimit
 
-If you run alpine and run into issues with Porla crashing when having many
-sessions, you can try to increase the number of open file descriptors with
-_ulimit_, such as,
+If you run into issues with Porla crashing when having many sessions, you can try to increase the number of open file descriptors with _ulimit_, such as,
 
 ```sh
 ulimit -n 102400
