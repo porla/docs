@@ -9,8 +9,8 @@ to run it in Linux environments using something like Systemd.
 
 ## Get started
 
-* Download the [latest release binary](https://github.com/porla/porla/releases/latest/download/porla).
-* Either run the binary directly, or see below on how to run it as a service.
+- Download the [latest release binary](https://github.com/porla/porla/releases/latest/download/porla).
+- Either run the binary directly, or see below on how to run it as a service.
 
 ## Example Systemd unit
 
@@ -26,4 +26,14 @@ User=porla
 
 [Install]
 WantedBy=multi-user.target
+```
+
+### Notes on alpine
+
+If you run alpine and run into issues with Porla crashing when having many
+sessions, you can try to increase the number of open file descriptors with
+_ulimit_, such as,
+
+```sh
+ulimit -n 102400
 ```
