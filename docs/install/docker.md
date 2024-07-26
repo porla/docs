@@ -25,7 +25,7 @@ Also, any downloads will have to be stored somewhere, and it is a good idea to
 mount a volume for downloads as well.
 
 ```shell
-docker run -p 1337:1337 -v /host/path:/dl -v /another/path:/var/lib/porla ghcr.io/porla/porla
+docker run -d --name porla -p 1337:1337 -v /host/path:/dl -v /another/path:/var/lib/porla --restart=unless-stopped ghcr.io/porla/porla
 ```
 
 
@@ -37,10 +37,9 @@ This is an example `docker-compose.yaml` file. Refer to the config docs to
 learn how to configure Porla properly.
 
 ```yaml
-version: '3'
-
 services:
   porla:
+    container_name: porla
     image: ghcr.io/porla/porla
     #user : "1000:1000" # Uncomment this line if you want run Porla with a different PUID:PGID
     ports:
