@@ -173,3 +173,45 @@ based workflows.
 ```toml
 workflow_dir = "/usr/lib/porla/workflows"
 ```
+
+### `Multiple session support`
+
+Porla supports running multiple sessions at once without running a seperate instance of porla.
+To do so you have to declare the sessions in the `config.toml` file and then you can use different
+settings for each session.
+
+```toml
+[sessions.secondary]
+[sessions.seeding]
+
+[sessions.secondary.settings]
+base = "default"
+listen_interfaces = "wg0:1234"
+outgoing_interfaces = "wg0"
+active_downloads = 3
+active_seeds = 1
+
+[sessions.seeding.settings]
+base = "high_performance_seed"
+listen_interfaces = "wg0:5678"
+outgoing_interfaces = "wg0"
+active_downloads = 2
+active_seeds = -1
+```
+
+Presets can then be assigned to add torrents to specific sessions. By default they are added to the
+default session as defined by `session_settings`.
+
+```toml
+[presets.new]
+category = "others"
+session = "secondary"
+tags = ["others"]
+
+[presets.ratio]
+category = "seed"
+session = "seeding"
+upload_limit = -1
+tags = ["ratiofarm","seeding"]
+"$hidden" = true
+```
