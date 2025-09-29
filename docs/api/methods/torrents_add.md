@@ -34,13 +34,18 @@ preset, which will also set a save path.
   // The name out of the torrent_info object takes precedence if available.
   "name": "some name",
 
-  // Set to a preset as configured in porla.toml to automatically set config
-  // values.
-  "preset": "my-preset-1",
+  // The ID of the preset to apply settings from. Optional. If no preset ID is
+  // specified, the one named "default" will be used (if any).
+  "preset_id": 8,
 
   // the path where the torrent is or will be stored. Setting this to an
   // absolute path performs slightly better than a relative path.
   "save_path": "/tmp",
+
+  // The ID of the session to add this torrent to. This will override the
+  // session ID from the preset (if any). If no session ID is specified,
+  // the default session will be used.
+  "session_id": 19,
 
   // the torrent file to add
   "ti": "<base64 encoded .torrent file>",
