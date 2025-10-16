@@ -13,7 +13,10 @@ Adds one or more peers to a torrent.
   "peers": [
     [ "192.168.0.5", 6881 ],
     [ "192.168.0.8", 6881 ]
-  ]
+  ],
+
+  // Optional session ID.
+  "session_id": 8
 }
 ```
 

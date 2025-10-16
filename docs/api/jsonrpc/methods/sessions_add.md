@@ -1,6 +1,6 @@
 # `sessions.add`
 
-Adds a session (see [Sessions](../../concepts/sessions.md)).
+Adds a session (see [Sessions](../../../concepts/sessions.md)).
 
 It is possible to specify a settings base (`default`, `high_performance_seed`
 or `min_memory_usage`) as well as any overrides to this base.

@@ -5,7 +5,12 @@ Lists peers of a torrent.
 ## Request
 
 ```json
-{ "info_hash": [ "abcdef0123456789abcd", null ] }
+{
+  "info_hash": [ "abcdef0123456789abcd", null ],
+
+  // Optional session ID.
+  "session_id": 9
+}
 ```
 
 ## Response

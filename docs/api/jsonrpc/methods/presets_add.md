@@ -1,6 +1,6 @@
 # `presets.add`
 
-Adds a preset (see [Presets](../../concepts/presets.md)).
+Adds a preset (see [Presets](../../../concepts/presets.md)).
 
 The name of a preset must be unique. If the name of a preset is `default` it
 will be applied by default without having to specify it in

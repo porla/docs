@@ -5,7 +5,13 @@ Lists all the files in a torrent.
 ## Request
 
 ```json
-{ "info_hash": [ "abcdef0123456789abcd", null ] }
+{
+  "info_hash": [ "abcdef0123456789abcd", null ],
+
+  // Optional session ID. If not specified, will look in the session
+  // named 'default'.
+  "session_id": 7
+}
 ```
 
 ## Response
@@ -49,3 +55,10 @@ Lists all the files in a torrent.
   ]
 }
 ```
+
+## Errors
+
+| Code | Reason |
+| ---- | ------ |
+| -1 | Session not found. If a `session_id` is specified, the session must exist. |
+| -2 | Torrent not found in session. |

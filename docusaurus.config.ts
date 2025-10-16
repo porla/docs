@@ -53,7 +53,7 @@ const config: Config = {
             label: 'Plugins',
           },
           {
-            to: 'api/auth',
+            to: 'api',
             position: 'left',
             label: 'HTTP API',
           },
