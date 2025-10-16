@@ -7,211 +7,141 @@ sidebar_position: 5
 Porla can be configured in various ways - either via environment variables,
 command line arguments, or a configuration file.
 
-Using a configuration file is recommended since it has support for all the
-options available.
+## Environment variables
 
-## Examples
+### `PORLA_CONFIG_FILE`
 
-Use the following examples as a base for your own configuration. If you do not specify
-a config, Porla will use default values.
+Path to a configuration file to use.
 
-### With `docker compose`
+### `PORLA_DB`
 
-```yaml
-version: "3"
+Path to a database file to store state in. If the file does not exist, Porla
+will try to create it.
 
-services:
-  porla:
-    image: ghcr.io/porla/porla
-    environment:
-      - PORLA_CONFIG_FILE=/var/lib/porla/config.toml # path to a TOML config file with additional configuration.
-      - PORLA_DB=/var/lib/porla/porla.sqlite # path a file (which does not need to exist) that porla will use to store its state.
-      - PORLA_HTTP_AUTH_DISABLED_YES_REALLY=false # set to true to disable HTTP JWT authentication (not recommended).
-      - PORLA_HTTP_BASE_PATH=/ # set to a path where the HTTP parts of Porla will be served. Defaults to /.
-      - PORLA_HTTP_HOST=0.0.0.0 # set to an IP address which to bind the HTTP server. Defaults to 127.0.0.1.
-      - PORLA_HTTP_METRICS_ENABLED=true # set to true/false to enable or disable the metrics endpoint. Defaults to true.
-      - PORLA_HTTP_PORT=1337 # set to the port to use for the HTTP server. Defaults to 1337.
-      - PORLA_LOG_LEVEL=debug # the minimum log level to use. Valid values are trace, debug, info, warning, error, fatal. Defaults to info.
-      - PORLA_SESSION_SETTINGS_BASE="default" # the libtorrent settings base to use for session settings. Valid values are default, min_memory_usage, high_performance_seed. Defaults to default.
-      - PORLA_STATE_DIR=/var/lib/porla # a path to a directory where Porla will store its state.
-      - PORLA_TIMER_DHT_STATS=5000 # the interval in milliseconds to push DHT stats. Defaults to 5000.
-      - PORLA_TIMER_SESSION_STATS=5000 # the interval in milliseconds to push session stats. Defaults to 5000.
-      - PORLA_TIMER_TORRENT_UPDATES=1000 # the interval in milliseconds to push torrent state updates. Defaults to 1000.
-      - PORLA_WORKFLOW_DIR=/var/lib/porla/workflows # the path to where Porla will load user workflows from.
+_Can be set to `:memory:` if an in-memory database should be used._
 
-```
+### `PORLA_HTTP_AUTH_DISABLED_YES_REALLY`
 
-## TOML reference
+Set this to exactly `true` in order to disable HTTP authentication. Not
+recommended, but can be used if an auth proxy is used.
 
-### `db`
+### `PORLA_HTTP_BASE_PATH`
 
-The `db` key specifies a file (which will be created if it does not exist)
-where Porla will store all of its state.
+Set to a value that prefixes the HTTP base path for all Porla HTTP endpoints.
 
-If `db` is set to `:memory:`, Porla will run with a SQLite in-memory database
-which can be useful for debugging. However, while torrent data is saved to disk,
-no other state is saved.
+For example, setting this to `/porla` will make the UI available at `/porla`
+and the API will be located at `/porla/api/v1/jsonrpc` for example.
 
-```toml
-db = "/var/lib/porla/porla.sqlite"
-```
+### `PORLA_HTTP_HOST`
 
-### `secret_key`
+The HTTP host that Porla will listen on. If not set, will default to
+_127.0.0.1_.
 
-_Setting a `secret_key` is highly encouraged_.
+### `PORLA_HTTP_METRICS_ENABLED`
 
-Porla uses the secret key to sign various pieces of data. For example, all JWTs
-are signed with this secret key. If no secret key is defined, Porla will generate
-a new one every startup. This means old JWTs becomes invalid.
+Enables or disables the HTTP `/metrics` endpoint where Prometheus (or similar)
+can scrape Porla metrics.
 
-Use `porla key:generate` to generate a cryptographically secure secret key.
-Use `sudo docker exec -it <CONTAINER_NAME> porla key:generate` for docker installations.
+Can be either `true` or `false`. If not specified, defaults to `true`.
 
-```toml
-secret_key = "<generated secret key>"
-```
+### `PORLA_HTTP_PORT`
 
-### `session_settings`
+The HTTP port that Porla will listen on. If not set, will default to _1337_.
 
-:::caution
+Yes, really.
 
-While having access to all libtorrent settings is a powerful feature, it is
-also easy to break stuff.
+### `PORLA_HTTP_WEBUI_ENABLED`
 
-:::
+Enables or disables the web UI. If disabled, Porla will not serve a web UI at
+the root path, and no web UI will be downloaded as part of the first-time start
+up.
 
-Use the `session_settings` section to directly set libtorrent settings. You can use
-the `base` key to set a base setting layer.
+Can be either `true` or `false`. If not specified, defaults to `true`.
 
-Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
-for detailed information for each setting.
+### `PORLA_HTTP_WEBUI_FILE`
 
-```toml
-[session_settings]
-base = "default" # (or "high_performance_seed", or "min_memory_usage")
-close_redundant_connections = false
-```
+The path to a zip file with a packaged web UI.
 
-### `listen_interfaces`
+### `PORLA_HTTP_WEBUI_REPOSITORY`
 
-The `listen_interfaces` key sets the interfaces to use when listening for
-connections. You can bind to either an IP address or a network interface name.
+The name of a GitHub repository that packages web UI releases. The repository
+must use GitHub releases and attach a zip file as an asset to the release.
 
-It is an array of arrays, where each sub-array has two elements. The first is
-a string which is either an IP address or a network interface name, the second
-is a number that represents the port to listen on for that specific interface.
+Defaults to `porla/web`.
 
-```toml
-listen_interfaces = [
-  ["0.0.0.0", 6881],
-  ["eth1",    6882]
-]
-```
+### `PORLA_LOG_LEVEL`
 
-### `presets`
+The minimum log level that Porla should log. Defaults to `info`. Valid values
+are,
 
-Presets is a powerful way of applying settings to a torrent. Any preset you add
-to the configuration can be references in the `preset` key when calling the
-`torrents.add` RPC method.
+ * `trace`
+ * `debug`
+ * `info`
+ * `warning`
+ * `error`
+ * `fatal`
 
-The special `default` preset is applied to all added torrents. Other presets
-will inherit the keys specified in the default preset. _All preset keys are optional_.
+### `PORLA_SECRET_KEY`
 
-```toml
-[presets.default] # example of all the 
-download_limit = 20000 # in bytes per second per torrent in this preset
-max_connections = 100
-max_uploads = 200
-save_path = "/dl/default"
-storage_mode = "allocate" # (or "sparse")
-upload_limit = -1 # -1 means unlimited
-category = "default"
-tags = ["tag1", "tag2"] # Array of tag strings
+The secret key that Porla uses when generating and validating authentication
+tokens. Can be any string value, but a pass phrase or long random string is
+recommended.
 
+Use `openssl rand -hex 32` to generate one.
 
+If not set, Porla will generate a random secret key every application startup,
+meaning JWT values will be invalidated each time.
 
-[presets.other-1] # override the save path from the default preset
-save_path = "/dl/other"
-```
+### `PORLA_STATE_DIR`
 
-### `proxy`
+The path to a directory where Porla will save its state.
 
-Set a proxy to use when connecting to BitTorrent peers.
+## Command line arguments
 
-```toml
-[proxy]
-host = "10.64.0.1"
-port = 1080
-type = "socks5"
-hostnames = true
-peer_connections = true
-tracker_connections = true
-```
+### `--config-file`
 
-### `timer`
+See [`PORLA_CONFIG_FILE`](#porla_config_file).
 
-The `timer` section specifies the interval for various timers in Porla. The
-interval is in milliseconds, and a value of 0 (or less) will disable the timer.
+### `--db`
 
-While disabling timers is supported, it will have an effect on how Porla operates.
+See [`PORLA_DB`](#porla_db).
 
-For example, disabling the `torrent_updates` timer (by setting it to 0) will
-also disable the `state_update` event in the events API.
+### `--http-base-path`
 
-```toml
-[timer]
-dht_stats = 3000
-session_stats = 3000
-torrent_updates = 1000
-```
+See [`PORLA_HTTP_BASE_PATH`](#porla_http_base_path).
 
-### `workflow_dir`
+### `--http-host`
 
-The `workflow_dir` key specifies the directory from where Porla will load Lua
-based workflows.
+See [`PORLA_HTTP_HOST`](#porla_http_host).
 
-```toml
-workflow_dir = "/usr/lib/porla/workflows"
-```
+### `--http-metrics-enabled`
 
-### `Multiple session support`
+See [`PORLA_HTTP_METRICS_ENABLED`](#porla_http_metrics_enabled).
 
-Porla supports running multiple sessions at once without running a seperate instance of porla.
-To do so you have to declare the sessions in the `config.toml` file and then you can use different
-settings for each session.
+### `--http-port`
 
-```toml
-[sessions.secondary]
-[sessions.seeding]
+See [`PORLA_HTTP_PORT`](#porla_http_port).
 
-[sessions.secondary.settings]
-base = "default"
-listen_interfaces = "wg0:1234"
-outgoing_interfaces = "wg0"
-active_downloads = 3
-active_seeds = 1
+### `--http-webui-enabled`
 
-[sessions.seeding.settings]
-base = "high_performance_seed"
-listen_interfaces = "wg0:5678"
-outgoing_interfaces = "wg0"
-active_downloads = 2
-active_seeds = -1
-```
+See [`PORLA_HTTP_WEBUI_ENABLED`](#porla_http_webui_enabled).
 
-Presets can then be assigned to add torrents to specific sessions. By default they are added to the
-default session as defined by `session_settings`.
+### `--http-webui-file`
 
-```toml
-[presets.new]
-category = "others"
-session = "secondary"
-tags = ["others"]
+See [`PORLA_HTTP_WEBUI_FILE`](#porla_http_webui_file).
 
-[presets.ratio]
-category = "seed"
-session = "seeding"
-upload_limit = -1
-tags = ["ratiofarm","seeding"]
-"$hidden" = true
-```
+### `--http-webui-repository`
+
+See [`PORLA_HTTP_WEBUI_REPOSITORY`](#porla_http_webui_repository).
+
+### `--log-level`
+
+See [`PORLA_LOG_LEVEL`](#porla_log_level).
+
+### `--secret-key`
+
+See [`PORLA_SECRET_KEY`](#porla_secret_key).
+
+### `--state-dir`
+
+See [`PORLA_STATE_DIR`](#porla_state_dir).
