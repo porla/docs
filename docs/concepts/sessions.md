@@ -9,3 +9,8 @@ session is isolated and can have its own set of settings.
 
 Running multiple sessions give you the possibility to set up one for racing,
 another for long term seeding, etc.
+
+## Settings
+
+Each session has its own settings, both libtorrent settings as well as some
+Porla specific settings.

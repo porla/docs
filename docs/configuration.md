@@ -81,6 +81,15 @@ are,
  * `error`
  * `fatal`
 
+### `PORLA_MMDB_FILE`
+
+The path to a MMDB file which is used for the
+[`mmdb.lookup`](./api/jsonrpc/methods/mmdb_lookip.md) method. It is up to the
+user to source a compatible MMDB file.
+
+Porla does not use the MMDB data for anything more than providing the JSONRPC
+APIs for doing lookups.
+
 ### `PORLA_SECRET_KEY`
 
 The secret key that Porla uses when generating and validating authentication
@@ -137,6 +146,10 @@ See [`PORLA_HTTP_WEBUI_REPOSITORY`](#porla_http_webui_repository).
 ### `--log-level`
 
 See [`PORLA_LOG_LEVEL`](#porla_log_level).
+
+### `--mmdb-file`
+
+See [`PORLA_MMDB_FILE`](#porla_mmdb_file).
 
 ### `--secret-key`
 
