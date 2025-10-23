@@ -5,7 +5,54 @@ where large amounts of torrents are in the session.
 
 You can (optionally) pass various filters to reduce and filter the result.
 
+:::info
+
+Using the `session_id` filter is recommended. It will reduce the iteration of
+torrents to only the specified session.
+
+:::
+
 ## Request
+
+### Filters
+
+#### `category`
+
+The name of a category. Use [`torrents.overview`](./torrents_overview.md) to
+list all available categories.
+
+#### `query`
+
+A [PQL](../../../pql.md) query.
+
+### Sorting
+
+#### `order_by`
+
+Which field to sort the torrents list by. The following is a list of valid
+values.
+
+ * `download_rate`
+ * `eta`
+ * `list_peers`
+ * `list_seeds`
+ * `name`
+ * `num_peers`
+ * `num_seeds`
+ * `progress`
+ * `queue_position`
+ * `ratio`
+ * `save_path`
+ * `size`
+ * `total`
+ * `total_done`
+ * `upload_rate`
+
+#### `order_by_dir`
+
+Set to either `asc` or `desc` to sort the torrents ascending or descending.
+
+### Example
 
 ```json
 {
@@ -19,6 +66,9 @@ You can (optionally) pass various filters to reduce and filter the result.
 
     // Only return torrents in this save path
     "save_path": "/dl",
+
+    // Only return torrents in this session
+    "session_id": 9,
 
     // Only return torrents that has this tag
     "tags": "foo"

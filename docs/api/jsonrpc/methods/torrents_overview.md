@@ -7,9 +7,13 @@ any torrent-specific data, only various counts.
 
 ### Filters
 
- * `session_id` - only return data for the session with the given ID. If you
-   have a large amount of sessions and/or torrents, this will speed things up
-   since only a single session will be iterated.
+#### `session_id`
+
+Only return data for the session with the given ID. If you have a large amount
+of sessions and/or torrents, this will speed things up since only a single
+session will be iterated.
+
+### Example
 
 ```json
 {
