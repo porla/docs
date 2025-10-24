@@ -16,6 +16,8 @@ torrents to only the specified session.
 
 ### Filters
 
+All filters are sent in the `filters` object.
+
 #### `category`
 
 The name of a category. Use [`torrents.overview`](./torrents_overview.md) to
@@ -24,6 +26,37 @@ list all available categories.
 #### `query`
 
 A [PQL](../../../pql.md) query.
+
+#### `save_path`
+
+Filter any torrents not in this save path.
+
+#### `session_id`
+
+The ID of a session.
+
+#### `tags`
+
+The name of a tag. Use [`torrents.overview`](./torrents_overview.md) to list
+all available tags.
+
+### Paging
+
+The method supports paging to iterate through large results. The default page
+size is _50_ - meaning if you do not supply paging information you will get the
+first 50 torrents.
+
+Use the `torrents_total` field in the response along with the `page_size` to
+calculate the number of pages, then use the `page` index to iterate through
+each page.
+
+#### `page`
+
+The page index.
+
+#### `page_size`
+
+The number of results to return for each page.
 
 ### Sorting
 
@@ -54,42 +87,20 @@ Set to either `asc` or `desc` to sort the torrents ascending or descending.
 
 ### Example
 
+This request uses a `query` filter to return all torrents that have a ratio
+of more than 1.0.
+
 ```json
 {
-  // (Optional) filters to apply to the listing
   "filters": {
-    // Only return torrents in this specific category
-    "category": "some-category",
-
-    // Only return torrents that match this PQL query
     "query": "ratio > 1.0",
-
-    // Only return torrents in this save path
-    "save_path": "/dl",
-
-    // Only return torrents in this session
-    "session_id": 9,
-
-    // Only return torrents that has this tag
-    "tags": "foo"
   },
 
-  // A zero based index of the page to fetch. Defaults to 0.
   "page": 0,
-
-  // Sets how many torrents per page to return. Defaults to 50.
   "page_size": 100,
 
-  // Which field to order torrents by. Supports the following fields,
-  // - "name"
-  // - "queue_position"
-  // - "size"
-  // Defaults to "queue_position".
-  "order_by": "name",
-
-  // Sets the order_by direction - either "asc" for ascending order, or "desc"
-  // for descending order. Defaults to "asc".
-  "order_by_dir": "asc"
+  "order_by": "ratio",
+  "order_by_dir": "desc"
 }
 ```
 
@@ -101,7 +112,7 @@ Set to either `asc` or `desc` to sort the torrents ascending or descending.
   "page": 0,
 
   // The page size of the result. The number of torrents returned is equal to,
-  // or less, than this.
+  // or less than, this.
   "page_size": 50,
 
   // The torrents in this page.
@@ -190,7 +201,7 @@ Set to either `asc` or `desc` to sort the torrents ascending or descending.
   // Total amount of torrents filtered
   "torrents_total": 1800,
 
-  // The total amount of torrents in the session, regardless of filters
+  // The total amount of torrents in all session, regardless of filters
   "torrents_total_unfiltered": 45007
 }
 ```
