@@ -4,8 +4,15 @@ Lists trackers for a torrent in Porla.
 
 ## Request
 
+ * `info_hash` - the info hash of the torrent to list trackers from.
+ * `session_id` _(optional)_ - the session ID where the torrent exists. If no
+   session ID is specified, the default session will be used.
+
 ```json
-{ "info_hash": [ "abcdef0123456789abcd", null ] }
+{
+  "info_hash": [ "abcdef0123456789abcd", null ],
+  "session_id": 19
+}
 ```
 
 ## Response
@@ -99,3 +106,11 @@ Lists trackers for a torrent in Porla.
   ]
 }
 ```
+
+## Errors
+
+| Code | Reason |
+| ---- | ------ |
+| -1 | Session not found. |
+| -2 | Torrent not found in session. |
+| -3 | Torrent is not valid. |

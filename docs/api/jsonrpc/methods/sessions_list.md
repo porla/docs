@@ -1,6 +1,6 @@
 # `sessions.list`
 
-Lists all sessions.
+Lists all sessions. Also includes their metadata and torrents count.
 
 ## Request
 
@@ -16,9 +16,9 @@ Lists all sessions.
     {
       "id": 8,
       "name": "long-term-seed",
-      "is_dht_running": true,
-      "is_listening": true,
-      "is_paused": false,
+      "metadata": {
+        "$color": "#ff00ff"
+      },
       "torrents_total": 544
     }
   ]
