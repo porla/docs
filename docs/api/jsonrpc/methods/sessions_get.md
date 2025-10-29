@@ -1,7 +1,6 @@
-# `sessions.settings.list`
+# `sessions.get`
 
-Lists all the session settings and their values for the session with the given
-ID.
+Get a session by ID.
 
 Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
 for detailed information for each setting.
@@ -18,9 +17,13 @@ for detailed information for each setting.
 
 ```json
 {
-  "settings": {
-    "anonymous_mode": false,
-    "proxy_port": 1080
+  "session": {
+    "id": 7,
+    "name": "default",
+    "settings": {
+      "anonymous_mode": false,
+      "proxy_port": 1080
+    }
   }
 }
 ```

@@ -1,6 +1,6 @@
-# `sessions.settings.set`
+# `sessions.update`
 
-Updates the settings for a given session.
+Updates a session by its ID.
 
 Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
 for detailed information for each setting.
