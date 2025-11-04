@@ -10,6 +10,14 @@ session is isolated and can have its own set of settings.
 Running multiple sessions give you the possibility to set up one for racing,
 another for long term seeding, etc.
 
+:::warning[Duplicate torrents]
+
+Since sessions are isolated, you can (for good or bad) add the same torrent to
+multiple sessions. While Porla handles this without issue, this is most likely
+frowned upon by various trackers.
+
+:::
+
 ## Listen interfaces
 
 :::info[TLDR]

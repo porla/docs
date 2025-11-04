@@ -78,10 +78,11 @@ might be tricky. Here's the lookup order for finding a session.
 
 ## Response
 
-This method returns the info hash of the added torrent.
-
 ```json
-{ "info_hash": [ "abcdef0123456789abcd", null ] }
+{
+  "info_hash": [ "abcdef0123456789abcd", null ],
+  "session_id": 7
+}
 ```
 
 ## Errors
