@@ -84,7 +84,7 @@ are,
 ### `PORLA_MMDB_FILE`
 
 The path to a MMDB file which is used for the
-[`mmdb.lookup`](./api/jsonrpc/methods/mmdb_lookip.md) method. It is up to the
+[`mmdb.lookup`](./api/jsonrpc/methods/mmdb_lookup.md) method. It is up to the
 user to source a compatible MMDB file.
 
 Porla does not use the MMDB data for anything more than providing the JSONRPC

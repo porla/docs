@@ -1,9 +1,7 @@
 # `sessions.get`
 
-Get a session by ID.
-
-Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
-for detailed information for each setting.
+Get a session by ID. This does not include the settings. For settings, use
+`sessions.settings.get`.
 
 ## Request
 
@@ -20,10 +18,11 @@ for detailed information for each setting.
   "session": {
     "id": 7,
     "name": "default",
-    "settings": {
-      "anonymous_mode": false,
-      "proxy_port": 1080
-    }
+    "is_default": true,
+    "is_listening": true,
+    "is_paused": false,
+    "metadata": {},
+    "torrents_total": 18
   }
 }
 ```

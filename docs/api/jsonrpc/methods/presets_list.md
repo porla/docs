@@ -15,7 +15,9 @@ List all presets.
   "presets": [
     {
       "id": 4,
-      "name": "my-preset"
+      "name": "my-preset",
+      "is_default": true,
+      "metadata": {}
     }
   ]
 }

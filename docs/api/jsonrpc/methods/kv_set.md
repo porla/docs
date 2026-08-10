@@ -1,10 +1,14 @@
 # `kv.set`
 
-Set values in the key-value store. If a key does not exist, it will be inserted
-and if it does exist, its value will be updated.
+Set values in the key-value store. If a key does not exist it will be inserted,
+and if it does exist its value will be updated.
 
-_Some keys are used internally by Porla. These are prefixed with `porla.` and
-should be updated with caution._
+:::warning
+
+Some keys are used internally by Porla. These are prefixed with `porla.` and
+should be used with caution.
+
+:::
 
 ## Request
 

@@ -1,16 +1,18 @@
 # `torrents.remove`
 
-Removes a torrent.
+Removes a torrent from either the specified session, or the default session.
 
 ## Request
 
 ```json
 {
-  // An array of torrent info hashes.
-  "info_hashes": [
-    [ "abcdef0123456789abcd", null ]
-  ],
-  // Set to true to remove the data as well.
+  // The info hash of the torrent to remove.
+  "info_hash": [ "abcdef0123456789abcd", null ],
+
+  // (Optional) The session ID that the info hash belongs to.
+  "session_id": 3,
+
+  // (Optional) Set to true to remove the data as well.
   "remove_data": false
 }
 ```

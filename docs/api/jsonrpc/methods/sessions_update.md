@@ -2,18 +2,15 @@
 
 Updates a session by its ID.
 
-Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
-for detailed information for each setting.
-
-_Some settings like user agent, peer ID, etc cannot be updated_.
+_To update settings, use `sessions.settings.set`_.
 
 ## Request
 
 ```json
 {
-  "id": 7,
-  "settings": {
-    "active_limit": 99
-  }
+  "id": 3,
+  "name": "new name",
+  "is_default": true,
+  "metadata": {}
 }
 ```

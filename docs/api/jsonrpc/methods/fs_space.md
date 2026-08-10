@@ -1,8 +1,14 @@
 # `fs.space`
 
-Checks the available space for a given path. Additionally, if the path is on a
-block device with quotas enabled, the quota information for the current user is
-queried as well.
+Checks the available space for a given path.
+
+
+:::info
+
+If the path is on a block device with quotas enabled, the quota information for
+the current user (the process owner user) is queried as well.
+
+:::
 
 ## Request
 

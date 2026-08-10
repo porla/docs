@@ -7,8 +7,12 @@ that specific key.
 Key-values are stored as a string->JSON pair and any JSON value can be stored
 for any string key.
 
-_Some keys are used internally by Porla. These are prefixed with `porla.` and
-should be used with caution._
+:::warning
+
+Some keys are used internally by Porla. These are prefixed with `porla.` and
+should be used with caution.
+
+:::
 
 ## Request
 

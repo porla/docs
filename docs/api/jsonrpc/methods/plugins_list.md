@@ -21,7 +21,9 @@ plugin archive file.
       "id": 7,
       "type": "path",
       "name": "skeleton",
-      "version": "0.1"
+      "version": "0.1",
+      "metadata": {},
+      "is_loaded": true
     }
   ]
 }

@@ -20,12 +20,12 @@ All filters are sent in the `filters` object.
 
 #### `category`
 
-The name of a category. Use [`torrents.overview`](./torrents_overview.md) to
+The name of a category. Use [`torrents.count`](./torrents_count.md) to
 list all available categories.
 
 #### `query`
 
-A [PQL](../../../pql.md) query.
+A [PQL](../../../concepts/pql.md) query.
 
 #### `save_path`
 
@@ -37,7 +37,7 @@ The ID of a session.
 
 #### `tags`
 
-The name of a tag. Use [`torrents.overview`](./torrents_overview.md) to list
+The name of a tag. Use [`torrents.count`](./torrents_count.md) to list
 all available tags.
 
 ### Paging
