@@ -32,3 +32,9 @@ All Porla does is converting it from the MMDB structure to a JSON value.
   }
 }
 ```
+
+## Errors
+
+| Code | Reason |
+| ---- | ------ |
+| -1 | MMDB file not loaded. |

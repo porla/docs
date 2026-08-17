@@ -16,10 +16,15 @@ Lists all sessions. Also includes their metadata and torrents count.
     {
       "id": 8,
       "name": "long-term-seed",
+      "is_default": false,
       "metadata": {
         "$color": "#ff00ff"
       },
-      "torrents_total": 544
+      "state": {
+        "is_listening": true,
+        "is_paused": false,
+        "torrents_total": 544
+      }
     }
   ]
 }

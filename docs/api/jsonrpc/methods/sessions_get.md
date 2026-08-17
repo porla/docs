@@ -19,10 +19,12 @@ Get a session by ID. This does not include the settings. For settings, use
     "id": 7,
     "name": "default",
     "is_default": true,
-    "is_listening": true,
-    "is_paused": false,
     "metadata": {},
-    "torrents_total": 18
+    "state": {
+      "is_listening": true,
+      "is_paused": false,
+      "torrents_total": 18
+    }
   }
 }
 ```

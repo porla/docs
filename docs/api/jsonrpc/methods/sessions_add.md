@@ -10,6 +10,7 @@ or `min_memory_usage`) as well as any overrides to this base.
 ```json
 {
   "name": "long-term-seed",
+  "metadata": {},
   "settings_base": "high_performance_seed",
   "settings": {
     "active_limit": 100

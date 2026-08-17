@@ -60,3 +60,9 @@ the current user (the process owner user) is queried as well.
   }
 }
 ```
+
+## Errors
+
+| Code | Reason |
+| ---- | ------ |
+| -1 | Could not check space for given path. |

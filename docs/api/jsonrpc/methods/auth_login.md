@@ -25,3 +25,9 @@ browser clients to support persistent logins without managing the token.
   "token": "ey..."
 }
 ```
+
+## Errors
+
+| Code | Reason |
+| ---- | ------ |
+| -1 | Invalid username/password. |
