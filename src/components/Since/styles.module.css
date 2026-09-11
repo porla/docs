@@ -1,0 +1,13 @@
+.since {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--ifm-font-family-monospace);
+  line-height: 1.2;
+  color: #fff;
+  background-color: var(--ifm-color-success-lighter);
+  margin-top: -30px;
+}
