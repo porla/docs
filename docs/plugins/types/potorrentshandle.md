@@ -10,6 +10,17 @@ Manages torrents for a specific session.
 
 Adds a torrent to the session.
 
+#### Example
+
+This will add a torrent to the session by its info hash.
+
+```lua
+torrents:add({
+    info_hash = LtInfoHash("aabb..")
+    save_path = "/tmp"
+})
+```
+
 ### <code>count(): number</code>
 
 <Since>v1.0</Since>

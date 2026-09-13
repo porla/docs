@@ -69,10 +69,6 @@ end
 
 Gets a list of information about the peers for this torrent.
 
-### <code>get_renamed_files(): [LtRenamedFiles](./ltrenamedfiles.md)</code>
-
-Gets information about the renamed files for this torrent.
-
 ### `have_piece(index: number): boolean`
 
 Returns true if the piece with the given index has been completely downloaded
