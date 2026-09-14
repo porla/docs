@@ -64,6 +64,23 @@ for handle, status in torrents:list() do
 end
 ```
 
+### <code>list(query: [PoQuery](./poquery.md)): [PoTorrentsIterator](./potorrentsiterator.md)</code>
+
+<Since>v1.0</Since>
+
+Returns an iterator that filters each torrent on the provided query - i.e only
+torrents that matches the iterator will be returned.
+
+#### Example
+
+```lua
+local only_large = PoQuery.parse("size:>1gb")
+
+for handle, status in torrents:list(only_large) do
+    print("Torrent {} is large", status.name)
+end
+```
+
 ### <code>remove(info_hash: [LtInfoHash](./ltinfohash.md)): void</code>
 
 <Since>v1.0</Since>

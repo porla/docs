@@ -19,12 +19,18 @@ end
 
 ### `clear(flag: string): void`
 
+<Since>v1.0</Since>
+
 Clears a flag by its name.
 
 ### `has(flag: string): boolean`
 
+<Since>v1.0</Since>
+
 Returns true if the flag is set.
 
 ### `set(flag: string): void`
+
+<Since>v1.0</Since>
 
 Sets the flag.

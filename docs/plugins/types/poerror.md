@@ -7,6 +7,12 @@ and does not wrap any user type.
 
 ### `category: string`
 
+<Since>v1.0</Since>
+
 ### `message: string`
 
+<Since>v1.0</Since>
+
 ### `value: number`
+
+<Since>v1.0</Since>
