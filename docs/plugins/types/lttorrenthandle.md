@@ -341,3 +341,10 @@ Returns the upload bandwidth limit for this torrent.
 <Since>v1.0</Since>
 
 Returns a list of the URL seeds for this torrent.
+
+### <code>userdata(): [PoTorrentData](./potorrentdata.md)</code>
+
+<Since>v1.0</Since>
+
+Returns a PoTorrentData object that lets you manage category, tags and also
+get the [PoSessionHandle](./posessionhandle.md).
