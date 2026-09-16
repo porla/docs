@@ -12,6 +12,12 @@ Updates a preset.
   "metadata": {},
   "category": null,
   "download_limit": null,
+
+  // Which flags that should be applied with this preset. To set a flag, put it
+  // in both flags and flags_mask. To unset, put it in just flags_mask.
+  "flags": ["default_dont_download"],
+  "flags_mask": ["default_dont_download"],
+
   "max_connections": null,
   "max_uploads": null,
   "save_path": "/tmp",
