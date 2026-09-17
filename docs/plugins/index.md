@@ -9,7 +9,7 @@ advanced customizations.
 
 ## Creating plugins
 
-See [creating plugins](./creating.md).
+See [creating plugins](./creating-plugins.md).
 
 ## Installing plugins
 
