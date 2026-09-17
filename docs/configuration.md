@@ -20,11 +20,6 @@ will try to create it.
 
 _Can be set to `:memory:` if an in-memory database should be used._
 
-### `PORLA_HTTP_AUTH_DISABLED_YES_REALLY`
-
-Set this to exactly `true` in order to disable HTTP authentication. Not
-recommended, but can be used if an auth proxy is used.
-
 ### `PORLA_HTTP_BASE_PATH`
 
 Set to a value that prefixes the HTTP base path for all Porla HTTP endpoints.
@@ -37,37 +32,11 @@ and the API will be located at `/porla/api/v1/jsonrpc` for example.
 The HTTP host that Porla will listen on. If not set, will default to
 _127.0.0.1_.
 
-### `PORLA_HTTP_METRICS_ENABLED`
-
-Enables or disables the HTTP `/metrics` endpoint where Prometheus (or similar)
-can scrape Porla metrics.
-
-Can be either `true` or `false`. If not specified, defaults to `true`.
-
 ### `PORLA_HTTP_PORT`
 
 The HTTP port that Porla will listen on. If not set, will default to _1337_.
 
 Yes, really.
-
-### `PORLA_HTTP_WEBUI_ENABLED`
-
-Enables or disables the web UI. If disabled, Porla will not serve a web UI at
-the root path, and no web UI will be downloaded as part of the first-time start
-up.
-
-Can be either `true` or `false`. If not specified, defaults to `true`.
-
-### `PORLA_HTTP_WEBUI_FILE`
-
-The path to a zip file with a packaged web UI.
-
-### `PORLA_HTTP_WEBUI_REPOSITORY`
-
-The name of a GitHub repository that packages web UI releases. The repository
-must use GitHub releases and attach a zip file as an asset to the release.
-
-Defaults to `porla/web`.
 
 ### `PORLA_LOG_LEVEL`
 
@@ -80,15 +49,6 @@ are,
  * `warning`
  * `error`
  * `fatal`
-
-### `PORLA_MMDB_FILE`
-
-The path to a MMDB file which is used for the
-[`mmdb.lookup`](./api/jsonrpc/methods/mmdb_lookup.md) method. It is up to the
-user to source a compatible MMDB file.
-
-Porla does not use the MMDB data for anything more than providing the JSONRPC
-APIs for doing lookups.
 
 ### `PORLA_SECRET_KEY`
 
@@ -123,33 +83,13 @@ See [`PORLA_HTTP_BASE_PATH`](#porla_http_base_path).
 
 See [`PORLA_HTTP_HOST`](#porla_http_host).
 
-### `--http-metrics-enabled`
-
-See [`PORLA_HTTP_METRICS_ENABLED`](#porla_http_metrics_enabled).
-
 ### `--http-port`
 
 See [`PORLA_HTTP_PORT`](#porla_http_port).
 
-### `--http-webui-enabled`
-
-See [`PORLA_HTTP_WEBUI_ENABLED`](#porla_http_webui_enabled).
-
-### `--http-webui-file`
-
-See [`PORLA_HTTP_WEBUI_FILE`](#porla_http_webui_file).
-
-### `--http-webui-repository`
-
-See [`PORLA_HTTP_WEBUI_REPOSITORY`](#porla_http_webui_repository).
-
 ### `--log-level`
 
 See [`PORLA_LOG_LEVEL`](#porla_log_level).
-
-### `--mmdb-file`
-
-See [`PORLA_MMDB_FILE`](#porla_mmdb_file).
 
 ### `--secret-key`
 

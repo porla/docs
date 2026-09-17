@@ -50,7 +50,7 @@ removed and
 
 Emitted when a torrent is paused.
 
-### <code>torrent.finished: ([LtInfoHash](../types/ltinfohash.md))</code>
+### <code>torrent.removed: ([LtInfoHash](../types/ltinfohash.md))</code>
 
 <Since>v1.0</Since>
 
@@ -62,7 +62,7 @@ Emitted when a torrent is removed. Only the info hash is given.
 
 Emitted when a torrent is resumed.
 
-### <code>torrent.finished: ([LtTorrentHandle](../types/lttorrenthandle.md))</code>
+### <code>torrent.storage_moved: ([LtTorrentHandle](../types/lttorrenthandle.md))</code>
 
 <Since>v1.0</Since>
 
