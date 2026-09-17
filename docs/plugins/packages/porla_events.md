@@ -42,7 +42,8 @@ Emitted when a file error occurs. The name of the file is passed as the second a
 
 Emitted when a torrent finishes. Porla tries to emit this only once per
 torrent, meaning that if a torrent has emitted the event and then some data is
-removed and 
+removed and re-downloaded, causing the libtorrent alert to emit, Porla will
+_not_ emit another `torrent.finished` event.
 
 ### <code>torrent.paused: ([LtTorrentHandle](../types/lttorrenthandle.md))</code>
 
