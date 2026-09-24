@@ -41,6 +41,12 @@ The current download limit.
 
 Returns a list with status about files that are open for this torrent.
 
+### <code>flags(): [LtTorrentFlags](./lttorrentflags.md)</code>
+
+<Since>v1.0</Since>
+
+Returns the current set of flags for this torrent.
+
 ### `flush_cache(): void`
 
 <Since>v1.0</Since>
@@ -59,6 +65,24 @@ Announce the torrent to the DHT.
 <Since>v1.0</Since>
 
 Announce the torrent on LSD.
+
+### `force_reannounce(seconds?: number, index?: number, flags?: table): void`
+
+<Since>v1.0</Since>
+
+Forces a reannounce for this torrent.
+
+- `seconds` - how many seconds from now to issue the announce. 0 or nil is immediate.
+- `index` - which tracker to re-announce. -1 or nil is all.
+- `flags` - `{ ignore_min_interval = boolean, high_priority = boolean }`, both are false by default.
+
+#### Example
+
+Forces an immediate re-announce to all trackers in this torrent.
+
+```lua
+th:force_reannounce(0, -1, { ignore_min_interval = true })
+```
 
 ### `force_recheck(): void`
 
@@ -92,6 +116,10 @@ end
 <Since>v1.0</Since>
 
 Gets a list of information about the peers for this torrent.
+
+### <code>get_renamed_files(): [LtRenamedFiles](./ltrenamedfiles.md)</code>
+
+<Since>v1.0</Since>
 
 ### `have_piece(index: number): boolean`
 
@@ -132,13 +160,27 @@ Returns the maximum number of connections this torrent will open.
 Returns the maximum number of peers that can be unchoked at the same time for
 this torrent.
 
-### `move_storage(path: string): void`
+### `move_storage(path: string, options?: table): void`
 
 <Since>v1.0</Since>
 
 Moves the file(s) that this torrent is currently seeding/downloading. This is
 done async and the `torrent.storage_moved` or `torrent.storage_moved_failed`
 will be emitted when done (or failed).
+
+Use `options` to set extra flags on the move operation. Available flags are,
+
+- `always_replace_files`
+- `fail_if_exist`
+- `dont_replace`
+- `reset_save_path`
+- `reset_save_path_unchecked`
+
+#### Example
+
+```lua
+th:move_storage("/tmp", { flags = "dont_replace" })
+```
 
 ### `pause(): void`
 
@@ -202,7 +244,7 @@ Triggers a `torrent.tracker_list` event to be emitted.
 Prioritizes files in the torrent. File priorities are from 0 to 7 (inclusive).
 
 | Priority | Meaning          |
-|----------|------------------|
+| -------- | ---------------- |
 | 0        | dont_download    |
 | 1        | low_priority     |
 | 4        | default_priority |
@@ -283,11 +325,44 @@ Begins an async rename of the file specified by the index. Triggers the event
 
 Resumes peer connections for this torrent.
 
+### `save_resume_data(): void`
+
+<Since>v1.0</Since>
+
+Begins an async save resume data operation for this torrent.
+
 ### `set_download_limit(val: number): void`
 
 <Since>v1.0</Since>
 
 Set the download bandwidth limit for this torrent.
+
+### <code>set_flags(flags: [LtTorrentFlags](./lttorrentflags.md), mask?: [LtTorrentFlags](./lttorrentflags.md)): void</code>
+
+<Since>v1.0</Since>
+
+Sets flags on the torrent. Use the `mask` override to both set and clear in a
+single call. Not all flags can be set - some one have an effect when adding a
+torrent, for example `seed_mode`.
+
+#### Example
+
+This example shows how the mask can be used to _unset_ a flag. All flags from
+`mask` will be set, so if a flag is missing in `flags` but set in `mask`, it will be unset.
+
+In the example, `paused` will be set and `auto_managed` will be unset. Stopping
+the torrent.
+
+```lua
+local flags = LtTorrentFlags()
+flags:set("paused")
+
+local mask = LtTorrentFlags()
+mask:set("auto_managed")
+mask:set("paused")
+
+th:set_flags(flags, mask)
+```
 
 ### `set_max_connections(val: number): void`
 
@@ -329,6 +404,10 @@ Sets the upload bandwidth limit for this torrent.
 <Since>v1.0</Since>
 
 Returns the list of trackers for this torrent.
+
+### <code>unset_flags(flags: [LtTorrentFlags](./lttorrentflags.md)): void</code>
+
+Unsets the flags passed in `flags`.
 
 ### `upload_limit(): number`
 
