@@ -33,17 +33,11 @@ See [the libtorrent docs](https://libtorrent.org/reference-Core.html#torrent_fla
 local flags = LtTorrentFlags()
 
 if flags:has("default_dont_download") then
-    flags:clear("default_dont_download")
+    flags:unset("default_dont_download")
 end
 ```
 
 ## Methods
-
-### `clear(flag: string): void`
-
-<Since>v1.0</Since>
-
-Clears a flag by its name.
 
 ### `has(flag: string): boolean`
 
@@ -56,3 +50,9 @@ Returns true if the flag is set.
 <Since>v1.0</Since>
 
 Sets the flag.
+
+### `unset(flag: string): void`
+
+<Since>v1.0</Since>
+
+Clears a flag by its name.
