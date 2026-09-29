@@ -5,11 +5,11 @@ how to write queries.
 
 ## Factories
 
-### `parse(pql: string): PoQuery`
+### `parse(pql: string): PoQuery?, string?`
 
 <Since>v1.0</Since>
 
-Parses the given PQL and returns a PoQuery
+Parses the given PQL and returns a PoQuery or an error if parsing failed.
 
 #### Example
 
