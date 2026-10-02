@@ -4,30 +4,28 @@ sidebar_position: 1
 
 # Auth
 
-The Porla API is protected with JWT bearer tokens. To call either the events
-API or JSONRPC API, you need to issue one.
+Much of the Porla HTTP API is protected with bearer tokens. They are either
+JWTs or simple opaque tokens. JWTs are used for user sessions, and opaque
+tokens are used for API keys.
+
+If you want to let other applications access Porla APIs, create API keys for
+them.
+
+## Creating an API key
+
+An API key can be created from the settings. It can have an optional expiry
+date. The API key token is shown once, and can not be retrieved again since
+only a hash of the secret part is stored in the database.
 
 :::info
-Before issuing tokens, make sure you have set a `secret_key`. Otherwise all
-tokens will become invalid when Porla restarts.
+The token will look like `porla_7e729d8818b337c3_7HMG5bH4Rlh2hjthXMb-Rn7inzul3Jn_gjDTHeYP5zA`.
+Use the whole value as token, including the `porla_` prefix.
 :::
 
-## Issuing a token
+## Using API keys
 
-To issue a token, run Porla with the `auth:token` command.
-
-```sh
-porla auth:token
-```
-
-This will print a JWT token to stdout with _no expiry_. Make sure to protect
-the token and only pass it to applications you trust. In a future update, Porla
-will add support for expiry and permissions.
-
-## Using tokens
-
-After you have issued a JWT, accessing the API is easy. Pass it in the
-`Authorization` as `Bearer <token>`.
+After you have created an API key and copied its token, accessing the API is
+easy. Pass it in the `Authorization` as `Bearer <token>`.
 
 ```sh
 http -A bearer -a $TOKEN :1337/api/v1/jsonrpc "method=sys.versions" "params="

@@ -21,7 +21,7 @@ parse it to either a v1 or v2 info hash depending on the string length.
 This call uses `curl` to get the versions of Porla and its various dependencies.
 
 ```
-curl -H "Authorization: Bearer <JWT>" \
+curl -H "Authorization: Bearer <token>" \
     -H "Content-Type: application/json" \
     -d '{ "jsonrpc": "2.0", "method": "sys.versions", "params": {} }' \
     http://localhost:1337/api/v1/jsonrpc
