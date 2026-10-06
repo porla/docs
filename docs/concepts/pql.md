@@ -36,21 +36,21 @@ easier to maintain.
 
 ### Troubleshooting
 
-| Query                                                              | Description                                                                                                                         |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `has_metadata:false added_time:<=30m`                              | Magnet links that are still fetching metadata after 30 minutes, which usually means nobody is sharing them.                         |
-| `announcing_to_trackers:true -has:current_tracker added_time:<=1h` | Torrents that should be using trackers but have had no tracker respond in over an hour. This points to tracker or network problems. |
-| `moving_storage:true OR state:checking_files,checking_resume_data` | Torrents busy with disk work; either being moved or rechecked.                                                                      |
-| `flags:paused,~auto_managed`                                       | Torrents that have been manually paused.                                                                                            |
-| `flags:sequential_download state:downloading`                      | Downloads in sequential mode, usually because streaming.                                                                            |
+| Query                                                                            | Description                                                                                                                         |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `has_metadata:false added_time:<=30m`                                            | Magnet links that are still fetching metadata after 30 minutes, which usually means nobody is sharing them.                         |
+| `announcing_to_trackers:true flags:~paused -has:current_tracker added_time:<-1h` | Torrents that should be using trackers but have had no tracker respond in over an hour. This points to tracker or network problems. |
+| `moving_storage:true OR state:checking_files,checking_resume_data`               | Torrents busy with disk work; either being moved or rechecked.                                                                      |
+| `flags:paused,~auto_managed`                                                     | Torrents that have been manually paused.                                                                                            |
+| `flags:sequential_download state:downloading`                                    | Downloads in sequential mode, usually because streaming.                                                                            |
 
 ### Stalled and dead
 
-| Query                                                                                                 | Description                                                                                                               |
-| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `state:downloading download_payload_rate:0 (last_download:>1h OR -has:last_download) added_time:<=1h` | Stalled downloads: nothing received for an hour, or ever. The added_time filter skips torrents that were only just added. |
-| `progress:>=95 is_finished:false`                                                                     | Downloads stuck nere the end, often waiting for the last (rare) pieces.                                                   |
-| `is_finished:false num_seeds:0 (last_seen_complete:<=14d OR -has:last_seen_complete)`                 | Likely dead torrents: no connected seeds, and no complete copy seen in two weeks, or ever.                                |
+| Query                                                                                                               | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `state:downloading flags:~paused download_payload_rate:0 (last_download:>1h OR -has:last_download) added_time:<-1h` | Stalled downloads: nothing received for an hour, or ever. The added_time filter skips torrents that were only just added. |
+| `progress:>=95 is_finished:false flags:~paused`                                                                     | Downloads stuck nere the end, often waiting for the last (rare) pieces.                                                   |
+| `is_finished:false flags:~paused num_seeds:0 (last_seen_complete:<-14d OR -has:last_seen_complete)`                 | Likely dead torrents: no connected seeds, and no complete copy seen in two weeks, or ever.                                |
 
 ### Seeding and cleanup
 
@@ -186,7 +186,6 @@ Fields that are useful but not part of the libtorrent torrent status.
 | `ratio_real`         | `Number`   | Upload ratio from this client's own counters only, without any fallback.                                                                                                                               | `ratio_real:<1`              |
 | `$userdata.category` | `Text`     | The torrent's category, or empty if not set.                                                                                                                                                           | `$userdata.category:=sonarr` |
 | `$userdata.tags`     | `Tag`      | The torrent's tags. Matches if any tag equals a listed value; `*` globs work.                                                                                                                          | `$userdata.tags:hd,4k`       |
-
 
 ## Syntax
 
