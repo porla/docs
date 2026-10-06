@@ -74,7 +74,7 @@ torrents that matches the iterator will be returned.
 #### Example
 
 ```lua
-local only_large = PoQuery.parse("size:>1gb")
+local only_large = PoQuery.parse("total:>1gb")
 
 for handle, status in torrents:list(only_large) do
     print("Torrent {} is large", status.name)
