@@ -7,7 +7,7 @@ how to write queries.
 
 ### `parse(pql: string): PoQuery?, string?`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Parses the given PQL and returns a PoQuery or an error if parsing failed.
 
@@ -25,6 +25,6 @@ end
 
 ### <code>includes(torrent: [LtTorrentStatus](../types/lttorrentstatus.md)): boolean</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Returns true if the given torrent status is matched by the filter.

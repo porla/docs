@@ -6,6 +6,8 @@ Wraps `libzip` and allows plugins to read zip files.
 
 ### `read(buffer: string): table?, string?`
 
+<Since>v0.46.0</Since>
+
 Reads the buffer and returns a table with the contents of the zip file.
 
 #### Example

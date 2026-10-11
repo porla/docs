@@ -6,7 +6,7 @@ Mostly wraps the `std::filesystem` C++ APIs for filesystem operations.
 
 ### `create_directories(path: string): boolean?, string?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 Creates the directory structure as specified by `path`. Returns a boolean that
 indicates success (or not), or an error.
@@ -19,7 +19,7 @@ local success, err = fs.create_directories("foo/bar/baz")
 
 ### `exists(path: string): boolean?, string?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 Checks if the given `path` exists. Returns a boolean that indicates if it does
 exist, or an error.

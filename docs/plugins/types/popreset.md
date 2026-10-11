@@ -7,52 +7,56 @@ _All properties are read-only_.
 
 ### `id: number`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `name: string`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
+
+### `is_default: boolean`
+
+<Since>v0.51.0</Since>
 
 ### `category: string?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `download_limit: number?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### <code>flags: [LtTorrentFlags](./lttorrentflags.md)?</code>
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### <code>flags_mask: [LtTorrentFlags](./lttorrentflags.md)?</code>
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `max_connections: number?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `max_uploads: number?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `session_id: number?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
-### `save_path: number?`
+### `save_path: string?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `storage_mode: string?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `tags: string[]`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 ### `upload_limit: number?`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>

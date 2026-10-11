@@ -6,7 +6,7 @@ Allows plugins to make asynchronous HTTP requests.
 
 ### <code>request(url: string, callback: PoHttpClientRequestCallback): void</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Makes a HTTP GET request to the `url` given.
 
@@ -15,14 +15,14 @@ Makes a HTTP GET request to the `url` given.
 ```lua
 local http_client = require("porla_http_client")
 
-http_client.request("https://porla.org", function(res)
+http_client.request("https://porla.org", function(err, res)
     print(res.status)
 end)
 ```
 
 ### <code>request(url: string, callback: PoHttpClientCallback, options: PoHttpClientRequestOptions): void</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Makes any type of HTTP request to the `url` given. Use `options` to customize the request.
 
@@ -41,7 +41,7 @@ http_client.request("http://some-url", callback, {
     body    = "{}",
     method  = "POST",
     headers = {
-        "X-Foo" = "bar"
+        ["X-Foo"] = "bar"
     }
 })
 ```

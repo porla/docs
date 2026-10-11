@@ -11,7 +11,7 @@ an existing method.
 
 ### `register(method: string, callback: function): void`
 
-<Since>v1.0</Since>
+<Since>v0.46.0</Since>
 
 Registers a method with the name `method`.
 

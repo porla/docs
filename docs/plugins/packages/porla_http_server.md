@@ -10,7 +10,7 @@ endpoint for Prometheus compatible metrics.
 
 ### <code>get(path: string, callback: [PoHttpServerCallback](../types/pohttpservercallback.md)): void</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Registers a callback handler for a HTTP GET request at the given path.
 

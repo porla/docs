@@ -6,7 +6,7 @@ Access sessions and their torrents.
 
 ### <code>count(): number</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Returns the number of loaded sessions in Porla. If a session fails to load for
 some reason, it will not be included in this count.
@@ -14,7 +14,7 @@ some reason, it will not be included in this count.
 
 ### <code>default(): [PoSessionHandle](../types/posessionhandle.md) | nil</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Returns the _default_ session - i.e the one marked with `is_default` in the
 database. If there is no default session, or if the default session is not
@@ -23,7 +23,7 @@ loaded, this function will return nil.
 
 ### <code>get(id: number): [PoSessionHandle](../types/posessionhandle.md) | nil</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Gets a session by its id. If the session is not loaded, this function will
 return nil.
@@ -43,7 +43,7 @@ end
 
 ### <code>list(): [PoSessionsIterator](../types/posessionsiterator.md)</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Returns an iterator to let you loop through all loaded sessions.
 
@@ -60,7 +60,7 @@ end
 
 ### <code>metrics(): table</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Returns the available libtorrent session metrics as a table. Each metric has a
 field `type` that is either `counter` or `gauge` depending on the metric type.

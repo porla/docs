@@ -6,7 +6,7 @@ Create various types of timers, such as one-shot, intervals and cron schedules.
 
 ### <code>cron(schedule: string, callback: function): [PoCancellable](../types/pocancellable.md)</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Sets up a cron schedule and returns a cancellable that can be used to cancel
 the cron schedule.
@@ -23,7 +23,7 @@ end)
 
 ### <code>interval(ms: number, callback: function): [PoCancellable](../types/pocancellable.md)</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Sets up a recurring interval that fires every N milliseconds.
 
@@ -39,7 +39,7 @@ end)
 
 ### <code>timeout(ms: number, callback: function): [PoCancellable](../types/pocancellable.md)</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Sets up a one-shot timeout that fires ones after N milliseconds.
 

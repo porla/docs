@@ -17,13 +17,13 @@ local client = sockets.tcp_client()
 
 client:connect("irc.libera.chat", 6697, function(err)
     if err then
-        print("Failed to connect to irc.libera.chat: {}", err)
+        print("Failed to connect to irc.libera.chat", err)
         return
     end
 
     client:tls(function(err)
         if err then
-            print("Failed to upgrade connection to TLS: {}", err)
+            print("Failed to upgrade connection to TLS", err)
             return
         end
 

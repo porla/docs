@@ -10,12 +10,12 @@ types and packages.
 
 ### `api_version_major: number`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 The major plugin API version.
 
 ### `api_version_minor: number`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
-The minor plugin API verison.
+The minor plugin API version.

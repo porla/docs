@@ -2,7 +2,7 @@
 
 ### <code>(request: [PoHttpServerRequest](./pohttpserverrequest.md), response: [PoHttpServerResponse](./pohttpserverresponse.md)): void</code>
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 #### Example
 

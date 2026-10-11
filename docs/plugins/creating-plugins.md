@@ -15,6 +15,9 @@ with your own plugin.
 
 ## Basics
 
+Plugins _must_ return a table. Any errors in the `init` function will fail the
+load.
+
 ```lua title="example.lua"
 return {
     init = function()
@@ -31,6 +34,8 @@ times.
 
 Users can pass configuration to a plugin. This configuration must be valid Lua
 as well. The Lua object is passed as the first argument to the `init` function.
+
+_Any errors in parsing the config will fail the load._
 
 ```lua title="example-with-config.lua"
 return {

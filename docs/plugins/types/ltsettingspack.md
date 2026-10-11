@@ -23,7 +23,7 @@ some_session:apply_settings(settings)
 
 ### `LtSettingsPack()`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Returns an empty settings pack.
 
@@ -31,11 +31,11 @@ Returns an empty settings pack.
 
 ### `default_settings()`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 ### `high_performance_seed()`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 #### Example
 
@@ -45,4 +45,4 @@ local settings = LtSettingsPack.high_performance_seed()
 
 ### `min_memory_usage()`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>

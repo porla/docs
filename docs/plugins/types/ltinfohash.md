@@ -7,14 +7,14 @@ places to find torrents, etc.
 
 ### `LtInfoHash(hex: string)`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Constructs an info hash from a hex string. Depending on the length, a v1 or v2
 info hash is built.
 
 ### `LtInfoHash(hex_v1: string, hex_v2: string)`
 
-<Since>v1.0</Since>
+<Since>v0.42.0</Since>
 
 Constructs an info hash from both a v1 and v2 hex string. This results in a
 a hybrid info hash.
