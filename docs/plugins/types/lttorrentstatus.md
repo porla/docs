@@ -205,9 +205,15 @@ bandwidth quota from the torrent rate limiter.
 
 <Since>v0.42.0</Since>
 
-### `torrent_file: LtTorrentInfo`
+### `torrent_file: LtTorrentInfo | nil`
 
 <Since>v0.42.0</Since>
+
+<Changed in="v0.51.1">
+
+Fixed so it returns a correct LtTorrentInfo
+
+</Changed>
 
 ### `total: number`
 

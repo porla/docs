@@ -144,6 +144,15 @@ print("Loaded torrent", params.name)
 
 <Since>v0.42.0</Since>
 
+<Changed in="v0.51.1">
+
+Now honored when adding.
+
+</Changed>
+
+Sets the tiers for the trackers. Must be an integer array, each value must be
+0 or more. Cannot have more entries than the `trackers` array.
+
 ### `trackers: string[]`
 
 <Since>v0.42.0</Since>
