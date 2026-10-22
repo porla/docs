@@ -47,3 +47,4 @@ Lists all the files in a torrent.
 | ---- | -------------------------------------------------------------------------- |
 | -1   | Session not found. If a `session_id` is specified, the session must exist. |
 | -2   | Torrent not found in session.                                              |
+| -4   | Torrent has no metadata                                                    |

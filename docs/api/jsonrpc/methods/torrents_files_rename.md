@@ -22,3 +22,11 @@ Rename a file in a torrent (on disk).
 ```json
 null
 ```
+
+## Errors
+
+| Code   | Reason                        |
+| ------ | ----------------------------- |
+| -5     | Torrent has no metadata       |
+| -6     | File index out of range       |
+| -32602 | `file_path` must not be empty |

@@ -69,6 +69,8 @@ Announce the torrent on LSD.
 
 <Since>v0.46.0</Since>
 
+_Raises an error if index isn't -1 or a valid tracker index._
+
 Forces a reannounce for this torrent.
 
 - `seconds` - how many seconds from now to issue the announce. 0 or nil is immediate.
@@ -266,6 +268,8 @@ Moves the torrent one step down in the queue.
 
 <Since>v0.42.0</Since>
 
+_Raises an error for a negative position._
+
 Updates the queue position for this torrent.
 
 ### `queue_position_top(): void`
@@ -295,6 +299,8 @@ Removes the given URL from the list of URL seeds, if it exists.
 ### `rename_file(index: number, name: string): void`
 
 <Since>v0.42.0</Since>
+
+_Raises an error for an empty name._
 
 Begins an async rename of the file specified by the index.
 

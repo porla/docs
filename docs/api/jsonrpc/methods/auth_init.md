@@ -22,7 +22,8 @@ null
 
 ## Errors
 
-| Code | Reason                   |
-| ---- | ------------------------ |
-| -1   | Auth already initialized |
-| -2   | Failed to hash password  |
+| Code | Reason                                  |
+| ---- | --------------------------------------- |
+| -1   | Auth already initialized                |
+| -2   | Failed to hash password                 |
+| -3   | Username and password must not be empty |

@@ -20,3 +20,9 @@ Sets a specific queue position for the torrent in the (libtorrent) download queu
 ```json
 null
 ```
+
+## Errors
+
+| Code   | Reason                      |
+| ------ | --------------------------- |
+| -32602 | queue_position must be >= 0 |

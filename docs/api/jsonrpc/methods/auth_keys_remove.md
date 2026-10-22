@@ -17,3 +17,9 @@ Removes an API key from Porla.
 ```json
 null
 ```
+
+## Errors
+
+| Code | Reason            |
+| ---- | ----------------- |
+| -1   | API key not found |

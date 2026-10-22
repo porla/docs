@@ -18,3 +18,9 @@ Reloading a plugin will unload it, then load it. To update the configuration
 ```json
 null
 ```
+
+## Errors
+
+| Code | Reason           |
+| ---- | ---------------- |
+| -1   | Plugin not found |

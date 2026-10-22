@@ -26,7 +26,8 @@ null
 
 ## Errors
 
-| Code | Reason             |
-| ---- | ------------------ |
-| -1   | Session not found  |
-| -2   | Session not loaded |
+| Code   | Reason                                                                                                        |
+| ------ | ------------------------------------------------------------------------------------------------------------- |
+| -1     | Session not found                                                                                             |
+| -2     | Session not loaded                                                                                            |
+| -32602 | Invalid setting value. `data.field` names the setting (e.g.`settings.file_pool_size`) and nothing is applied. |

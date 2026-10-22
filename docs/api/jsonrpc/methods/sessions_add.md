@@ -31,3 +31,9 @@ _Only `name` is required_.
   "id": 8
 }
 ```
+
+## Errors
+
+| Code   | Reason                                                                                                        |
+| ------ | ------------------------------------------------------------------------------------------------------------- |
+| -32602 | Invalid setting value. `data.field` names the setting (e.g.`settings.file_pool_size`) and nothing is applied. |

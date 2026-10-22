@@ -28,6 +28,8 @@ Adds a node to the DHT routing table.
 
 <Since>v0.42.0</Since>
 
+_Raises an error if a value is out of range; nothing is applied._
+
 Applies settings to this session. Some settings cannot be set, like user agent
 or peer fingerprint.
 
