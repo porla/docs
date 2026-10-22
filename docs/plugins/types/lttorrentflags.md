@@ -37,6 +37,10 @@ if flags:has("default_dont_download") then
 end
 ```
 
+## Constructors
+
+### `LtTorrentFlags()`
+
 ## Methods
 
 ### `has(flag: string): boolean`

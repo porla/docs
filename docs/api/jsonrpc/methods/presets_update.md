@@ -1,8 +1,11 @@
 # `presets.update`
 
-Updates a preset.
+Replaces the whole preset. _Every optional field that is left out is cleared
+to null_.
 
 ## Request
+
+`id`, `name` and `tags` are required.
 
 ```json
 {
@@ -31,5 +34,5 @@ Updates a preset.
 ## Response
 
 ```json
-{}
+null
 ```

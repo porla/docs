@@ -7,6 +7,8 @@ or `min_memory_usage`) as well as any overrides to this base.
 
 ## Request
 
+_Only `name` is required_.
+
 ```json
 {
   "name": "long-term-seed",
@@ -14,7 +16,11 @@ or `min_memory_usage`) as well as any overrides to this base.
   "settings_base": "high_performance_seed",
   "settings": {
     "active_limit": 100
-  }
+  },
+  "timer_dht_stats": number | null,
+  "timer_save_state": number | null,
+  "timer_session_stats": number | null,
+  "timer_torrent_updates": number | null,
 }
 ```
 

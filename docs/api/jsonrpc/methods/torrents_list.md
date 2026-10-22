@@ -37,8 +37,8 @@ The ID of a session.
 
 #### `tags`
 
-The name of a tag. Use [`torrents.count`](./torrents_count.md) to list
-all available tags.
+The a list of tags. Use [`torrents.count`](./torrents_count.md) to list
+all available tags. All specified tags must match.
 
 ### Paging
 
@@ -65,21 +65,20 @@ The number of results to return for each page.
 Which field to sort the torrents list by. The following is a list of valid
 values.
 
- * `download_rate`
- * `eta`
- * `list_peers`
- * `list_seeds`
- * `name`
- * `num_peers`
- * `num_seeds`
- * `progress`
- * `queue_position`
- * `ratio`
- * `save_path`
- * `size`
- * `total`
- * `total_done`
- * `upload_rate`
+- `download_rate`
+- `eta`
+- `list_peers`
+- `list_seeds`
+- `name`
+- `num_peers`
+- `num_seeds`
+- `progress`
+- `queue_position`
+- `ratio`
+- `save_path`
+- `total`
+- `total_done`
+- `upload_rate`
 
 #### `order_by_dir`
 
@@ -92,15 +91,11 @@ of more than 1.0.
 
 ```json
 {
-  "filters": {
-    "query": "ratio > 1.0",
-  },
-
+  "filters": { "category": "linux" },
   "page": 0,
-  "page_size": 100,
-
-  "order_by": "ratio",
-  "order_by_dir": "desc"
+  "page_size": 20,
+  "order_by": "name",
+  "order_by_dir": "asc"
 }
 ```
 
@@ -113,95 +108,89 @@ of more than 1.0.
 
   // The page size of the result. The number of torrents returned is equal to,
   // or less than, this.
-  "page_size": 50,
+  "page_size": 20,
 
   // The torrents in this page.
   "torrents": [
     {
-      // the number of seconds this torrent has spent in the session and not
-      // been paused
-      "active_duration": 18,
-
-      // the total rates for all peers for this torrent. These will usually
-      // have better precision than summing the rates from all peers. The rates
-      // are given as the number of bytes per second.
-      "download_rate": 788,
-      "upload_rate": 123,
-
-      // the number of seconds this torrent had all _selected_ files and pieces
-      // downloaded and available to other peers.
-      "finished_duration": 0,
-
-      // reflects several of the torrent's flags
-      "flags": 129,
-
-      // the torrents info hash
-      "info_hash": [ "", null ],
-
-      // the number of seeds in our peer list and the total number of peers
-      // (including seeds). We are not necessarily connected to all the peers
-      // in our peer list. This is the number of peers we know of in total,
-      // including banned peers and peers that we have failed to connect to.
-      "list_peers": 87,
-      "list_seeds": 89,
-
-      // the name of the torrent. Typically this is derived from the
-      // .torrent file. In case the torrent was started without metadata,
-      // and hasn't completely received it yet, it returns the name given
-      // to it when added to the session.
-      "name": "ubuntu",
-
-      // the number of peers this torrent currently is connected to. Peer
-      // connections that are in the half-open state (is attempting to connect)
-      // or are queued for later connection attempt do not count. Although they
-      // are visible in the peer list
-      "num_peers": 898,
-
-      // the number of peers that are seeding that this client is
-      // currently connected to.
-      "num_seeds": 76,
-
-      // a value in the range [0, 1], that represents the progress of the
-      // torrent's current task. It may be checking files or downloading.
-      "progress": 0.54487,
-
-      // the position this torrent has in the download queue. If the torrent is
-      // a seed or finished, this is -1.
-      "queue_position": 9,
-
-      // the current ratio of the torrent. this is calculated by doing
-      // all_time_upload / all_time_download
-      "ratio": 0.543,
-
-      // the path to the directory where this torrent's files are stored.
-      "save_path": "/dl/my-stuff",
-
-      // the number of seconds this torrent had _all_ files and pieces downloaded
-      // and available to other peers.
-      "seeding_duration": 67,
-
-      // the total number of bytes the torrent-file represents. Note that this
-      // is the number of pieces times the piece size (modulo the last piece
-      // possibly being smaller). With pad files, the total size will be larger
-      // than the sum of all (regular) file sizes.
-      "size": 87677,
-
-      // the total number of bytes to download for this torrent. This may be
-      // less than the size of the torrent in case there are pad files. This
-      // number only counts bytes that will actually be requested from peers.
-      "total": 887,
-
-      // the total number of bytes of the file(s) that we have. All this does
-      // not necessarily has to be downloaded during this session (that's
-      // ``total_payload_download``).
-      "total_done": 766,
+      "$userdata": {
+        "category": "linux",
+        "completed_at": 1792661187,
+        "metadata": {
+          "source": "rss"
+        },
+        "tags": ["iso", "ubuntu"]
+      },
+      "active_duration": 864000,
+      "added_time": 1792661186,
+      "all_time_download": 6203355136,
+      "all_time_upload": 18610065408,
+      "announcing_to_dht": true,
+      "announcing_to_lsd": true,
+      "announcing_to_trackers": true,
+      "block_size": 16384,
+      "completed_time": 1792661187,
+      "connect_candidates": 12,
+      "connections_limit": -1,
+      "current_tracker": "https://torrent.ubuntu.com/announce",
+      "distributed_copies": -1.0,
+      "down_bandwidth_queue": 0,
+      "download_payload_rate": 0,
+      "download_rate": 412,
+      "errc": null,
+      "finished_duration": 863400,
+      "flags": ["apply_ip_filter", "auto_managed"],
+      "has_incoming": true,
+      "has_metadata": true,
+      "info_hash": ["e96c5e5dd636ff9ea8e504ab31ad6bf0df7e7af5", null],
+      "is_finished": true,
+      "is_seeding": true,
+      "last_download": -1,
+      "last_seen_complete": 1793525100,
+      "last_upload": 4,
+      "list_peers": 48,
+      "list_seeds": 31,
+      "moving_storage": false,
+      "name": "ubuntu-24.04.1-desktop-amd64.iso",
+      "need_save_resume_data": ["if_counters_changed"],
+      "next_announce": 1712,
+      "num_complete": 1874,
+      "num_connections": 6,
+      "num_incomplete": 52,
+      "num_peers": 6,
+      "num_pieces": 1479,
+      "num_seeds": 0,
+      "num_uploads": 4,
+      "progress": 1.0,
+      "queue_position": -1,
+      "ratio": 3.0,
+      "ratio_real": 3.0,
+      "save_path": "/downloads/linux",
+      "seed_rank": 805306371,
+      "seeding_duration": 863400,
+      "state": "seeding",
+      "storage_mode": "sparse",
+      "total": 6203355136,
+      "total_done": 6203355136,
+      "total_download": 98304,
+      "total_failed_bytes": 0,
+      "total_payload_download": 0,
+      "total_payload_upload": 1048576000,
+      "total_redundant_bytes": 0,
+      "total_upload": 1052770304,
+      "total_wanted": 6203355136,
+      "total_wanted_done": 6203355136,
+      "up_bandwidth_queue": 0,
+      "upload_payload_rate": 524288,
+      "upload_rate": 530112,
+      "uploads_limit": -1
     }
   ],
 
   // Total amount of torrents filtered
-  "torrents_total": 1800,
+  "torrents_total": 1,
 
   // The total amount of torrents in all session, regardless of filters
-  "torrents_total_unfiltered": 45007
+  "torrents_total_unfiltered": 2
 }
 ```

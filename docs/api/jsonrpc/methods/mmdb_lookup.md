@@ -17,9 +17,7 @@ All Porla does is converting it from the MMDB structure to a JSON value.
 
 ```json
 {
-  "values": [
-    "8.8.8.8"
-  ]
+  "values": ["8.8.8.8"]
 }
 ```
 
@@ -35,6 +33,6 @@ All Porla does is converting it from the MMDB structure to a JSON value.
 
 ## Errors
 
-| Code | Reason |
-| ---- | ------ |
-| -1 | MMDB file not loaded. |
+| Code | Reason               |
+| ---- | -------------------- |
+| -1   | MMDB file not loaded |

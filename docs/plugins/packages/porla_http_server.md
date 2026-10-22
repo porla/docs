@@ -23,3 +23,14 @@ http_server.get("/hello", function(req, res)
     res:finish("Hello!")
 end)
 ```
+
+### <code>post(path: string, callback: [PoHttpServerCallback](../types/pohttpservercallback.md)): void</code>
+
+<Since>v0.42.0</Since>
+
+
+### <code>put(path: string, callback: [PoHttpServerCallback](../types/pohttpservercallback.md)): void</code>
+
+### <code>delete(path: string, callback: [PoHttpServerCallback](../types/pohttpservercallback.md)): void</code>
+
+### <code>any(path: string, callback: [PoHttpServerCallback](../types/pohttpservercallback.md)): void</code>

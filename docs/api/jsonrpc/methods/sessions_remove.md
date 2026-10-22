@@ -1,8 +1,9 @@
 # `sessions.remove`
 
-Removes a session and all its transfers.
+Removes a session. If the session has any torrents, this operation will be
+refused.
 
-_The session named `default` cannot be removed._
+_The default session cannot be removed._
 
 ## Request
 
@@ -15,5 +16,13 @@ _The session named `default` cannot be removed._
 ## Response
 
 ```json
-{}
+null
 ```
+
+## Errors
+
+| Code | Reason                              |
+| ---- | ----------------------------------- |
+| -1   | Session not found                   |
+| -2   | Cannot remove default session       |
+| -3   | Cannot remove session with torrents |

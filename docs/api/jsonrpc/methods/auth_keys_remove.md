@@ -15,5 +15,5 @@ Removes an API key from Porla.
 ## Response
 
 ```json
-{}
+null
 ```

@@ -3,7 +3,7 @@
 If the Porla instance requires setup (i.e no users in the database) then this
 method can be used to create the initial user.
 
-Calling this method returns an error if there are users in the database.
+After the first user exists, every call will fail with `-1`.
 
 ## Request
 
@@ -17,12 +17,12 @@ Calling this method returns an error if there are users in the database.
 ## Response
 
 ```json
-{
-}
+null
 ```
 
 ## Errors
 
-| Code | Reason |
-| ---- | ------ |
-| -1 | Auth already initialized. |
+| Code | Reason                   |
+| ---- | ------------------------ |
+| -1   | Auth already initialized |
+| -2   | Failed to hash password  |

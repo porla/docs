@@ -25,6 +25,8 @@ with.
 
 Returns true if the given tag exists.
 
+### `metadata(key: string): object`
+
 ### `tags(): string[]`
 
 <Since>v0.42.0</Since>
@@ -43,7 +45,7 @@ Updates category, metadata and tags.
 data:update({
     category = "new category",
     metadata = {
-        foo = porla.nil, -- will remove the key `foo`
+        foo = porla.null, -- will remove the key `foo`
         bar = 1337 -- adds/sets bar
     },
     tags = { "tv", "not-tv" } -- replaces the tag list

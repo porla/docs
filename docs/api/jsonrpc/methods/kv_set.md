@@ -14,16 +14,17 @@ should be used with caution.
 
 ```json
 {
-  "webui.torrents.list.cols": [
-    { "id": "info-hash", "order": 1 },
-    { "id": "name",      "order": 2 },
-  ]
+  "values": {
+    "webui.torrents.list.cols": [
+      { "id": "info-hash", "order": 1 },
+      { "id": "name", "order": 2 }
+    ]
+  }
 }
 ```
 
 ## Response
 
 ```json
-{
-}
+null
 ```

@@ -38,7 +38,7 @@ easier to maintain.
 
 | Query                                                                            | Description                                                                                                                         |
 | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `has_metadata:false added_time:<=30m`                                            | Magnet links that are still fetching metadata after 30 minutes, which usually means nobody is sharing them.                         |
+| `has_metadata:false added_time:<-30m.`                                           | Magnet links that are still fetching metadata after 30 minutes, which usually means nobody is sharing them.                         |
 | `announcing_to_trackers:true flags:~paused -has:current_tracker added_time:<-1h` | Torrents that should be using trackers but have had no tracker respond in over an hour. This points to tracker or network problems. |
 | `moving_storage:true OR state:checking_files,checking_resume_data`               | Torrents busy with disk work; either being moved or rechecked.                                                                      |
 | `flags:paused,~auto_managed`                                                     | Torrents that have been manually paused.                                                                                            |
@@ -49,7 +49,7 @@ easier to maintain.
 | Query                                                                                                               | Description                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `state:downloading flags:~paused download_payload_rate:0 (last_download:>1h OR -has:last_download) added_time:<-1h` | Stalled downloads: nothing received for an hour, or ever. The added_time filter skips torrents that were only just added. |
-| `progress:>=95 is_finished:false flags:~paused`                                                                     | Downloads stuck nere the end, often waiting for the last (rare) pieces.                                                   |
+| `progress:>=95 is_finished:false flags:~paused`                                                                     | Downloads stuck near the end, often waiting for the last (rare) pieces.                                                   |
 | `is_finished:false flags:~paused num_seeds:0 (last_seen_complete:<-14d OR -has:last_seen_complete)`                 | Likely dead torrents: no connected seeds, and no complete copy seen in two weeks, or ever.                                |
 
 ### Seeding and cleanup
@@ -57,7 +57,7 @@ easier to maintain.
 | Query                                                                      | Description                                                                                                                                                                                                                     |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `is_finished:true ratio_real:<1 seeding_duration:<3d`                      | Private-tracker hit-and-run protection: finished torrents that haven't paid back their download yet and have seeded less than three days. Don't remove these. It uses `ratio_real` so a cross-seed doesn't hide a real deficit. |
-| `is_seeding:true (last_upload:>30d OR -has:last_upload) added_time:<=30d`  | Seeds nobody has downloaded from in a month, or ever, that have been around at least that long. These are good candidates for freeing space.                                                                                    |
+| `is_seeding:true (last_upload:>30d OR -has:last_upload) added_time:<=-30d` | Seeds nobody has downloaded from in a month, or ever, that have been around at least that long. These are good candidates for freeing space.                                                                                    |
 | `is_seeding:true (ratio:>=2 OR seeding_duration:>4w) -$userdata.tags:keep` | Torrents that have done their part (ratio 2 or a month of seeding), excluding anything tagged keep. A typical auto-removal rule.                                                                                                |
 
 ## Fields
@@ -141,8 +141,8 @@ Bytes per second; units such as `kb`, `mib` with an optional `/s` are supported.
 | ---------------------- | -------- | ------------------------------------------------------------------------- | ------------------------- |
 | `uploads_limit`        | `Number` | Maximum unchoked peers for this torrent.                                  | `uploads_limit:<10`       |
 | `connections_limit`    | `Number` | Maximum peer connections for this torrent.                                | `connections_limit:<100`  |
-| `upload_limit`         | `Number` | Upload speed limit for this torrent, or empty if unlimited.               | `upload_limit:<1mb/s`     |
-| `download_limit`       | `Number` | Download speed limit for this torrent, or empty if unlimited.             | `has:download_limit`      |
+| `upload_limit`         | `Rate`   | Upload speed limit for this torrent, or empty if unlimited.               | `upload_limit:<1mb/s`     |
+| `download_limit`       | `Rate`   | Download speed limit for this torrent, or empty if unlimited.             | `has:download_limit`      |
 | `up_bandwidth_queue`   | `Number` | Number of peers waiting for upload bandwidth.                             | `up_bandwidth_queue:>0`   |
 | `down_bandwidth_queue` | `Number` | Number of peers waiting for download bandwidth.                           | `down_bandwidth_queue:>0` |
 | `seed_rank`            | `Number` | Seeding priority used by the auto-manager; higher ranks are seeded first. | `seed_rank:>1000`         |
@@ -243,7 +243,7 @@ Values can also be written as:
 
 | Form         | Meaning                                                             | Works for                                            |
 | ------------ | ------------------------------------------------------------------- | ---------------------------------------------------- |
-| `a,b,c`      | any of these values                                                 | text, `tag`, `hash`, `is`, `has`                     |
+| `a,b,c`      | any of these values                                                 | text, `tag`, `hash`, `has`, `flags`, `state`         |
 | `a..b`       | a range, including both ends                                        | numbers, sizes, rates, durations, percentages, dates |
 | `ubuntu*iso` | a pattern where `*` matches anything. It must match the whole value | text, `tag`                                          |
 | `"a,b"`      | the literal value, with no lists, ranges or patterns                | everything                                           |

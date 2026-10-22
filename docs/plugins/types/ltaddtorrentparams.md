@@ -11,11 +11,19 @@ is handed over to the C++ side and it is converted to a real object.
 
 ## Factories
 
+### <code>from_buffer(buffer: string): LtAddTorrentParams | nil, [PoError](./poerror.md) | nil</code>
+
+Creates a params object from a torrent file buffer.
+
+### <code>from_magnet(uri: string): LtAddTorrentParams | nil, [PoError](./poerror.md) | nil</code>
+
+Creates a params object from a magnet URI.
+
 ### <code>from_path(path: string): LtAddTorrentParams | nil, [PoError](./poerror.md) | nil</code>
 
 <Since>v0.42.0</Since>
 
-Loads a torrent file from a path and parses it into an LtAddTorrentParams.
+Creates a params object from a file path.
 
 #### Example
 
@@ -172,3 +180,6 @@ Sets the tiers for the trackers. Must be an integer array, each value must be
 ### `url_seeds: string[]`
 
 <Since>v0.42.0</Since>
+
+### `userdata: {category?, tags?, metadata?}`
+

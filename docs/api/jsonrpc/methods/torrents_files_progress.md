@@ -20,8 +20,8 @@ Lists the progress for all files in a torrent.
 {
   // An array with the number of bytes downloaded for each file (by index).
   "progress": [
-    288,
-    19298
+    1605002,
+    0
   ]
 }
 ```

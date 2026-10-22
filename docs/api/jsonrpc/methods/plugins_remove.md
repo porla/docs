@@ -14,12 +14,11 @@ removed.
 ## Response
 
 ```json
-{
-}
+null
 ```
 
 ## Errors
 
-| Code | Reason |
-| ---- | ------ |
-| -1 | A plugin with the specified ID was not found. |
+| Code | Reason                                        |
+| ---- | --------------------------------------------- |
+| -1   | A plugin with the specified ID was not found. |

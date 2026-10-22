@@ -77,7 +77,7 @@ torrents that matches the iterator will be returned.
 local only_large = PoQuery.parse("total:>1gb")
 
 for handle, status in torrents:list(only_large) do
-    print("Torrent {} is large", status.name)
+    print("Torrent", status.name, "is large")
 end
 ```
 

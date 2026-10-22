@@ -1,6 +1,9 @@
 # `auth.login`
 
-Logs in the given user and returns an authentication token (JWT).
+Logs in the given user and returns an authentication token (JWT). The token is
+valid for 24 hours and cannot be refreshed.
+
+For programmatic access, use API keys.
 
 :::info
 
@@ -28,6 +31,6 @@ browser clients to support persistent logins without managing the token.
 
 ## Errors
 
-| Code | Reason |
-| ---- | ------ |
-| -1 | Invalid username/password. |
+| Code | Reason                                |
+| ---- | ------------------------------------- |
+| -1   | Invalid username/password combination |

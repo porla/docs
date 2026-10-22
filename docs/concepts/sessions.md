@@ -42,3 +42,6 @@ effectively asking the operating system for a random port to use.
 
 Each session has its own settings, both libtorrent settings as well as some
 Porla specific settings.
+
+Porla always overwrites `alert_mask`, `peer_fingerprint` and `user_agent`
+(`porla/<version> libtorrent/<version>`). Unknown setting names are ignored.

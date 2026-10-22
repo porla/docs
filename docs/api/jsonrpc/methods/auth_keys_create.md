@@ -31,3 +31,10 @@ The `key` value is the actual token and cannot be retrieved again, so persist th
   "key": "porla_7e729d8818b337c3_7HMG5bH4Rlh2hjthXMb-Rn7inzul3Jn_gjDTHeYP5zA"
 }
 ```
+
+## Errors
+
+| Code | Reason                                       |
+| ---- | -------------------------------------------- |
+| -1   | Invalid name - length must be between 1-1024 |
+| -2   | Invalid `expires_at` - must be in the future |

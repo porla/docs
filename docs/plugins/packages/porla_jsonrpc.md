@@ -9,7 +9,7 @@ an existing method.
 
 ## Exports
 
-### `register(method: string, callback: function): void`
+### `register(method: string, callback: function, can_invoke?: function): void`
 
 <Since>v0.46.0</Since>
 
@@ -20,11 +20,15 @@ Registers a method with the name `method`.
 ```lua
 local jsonrpc = require("porla_jsonrpc")
 
+local function check_invoke(ctx)
+    return ctx.kind == "user"
+end
+
 jsonrpc.register("custom.method", function(params, res)
     print(params.name)
 
     res:ok({
         hello = "world"
     })
-end)
+end, check_invoke)
 ```

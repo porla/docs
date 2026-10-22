@@ -2,11 +2,13 @@
 
 Checks the available space for a given path.
 
-
 :::info
 
 If the path is on a block device with quotas enabled, the quota information for
 the current user (the process owner user) is queried as well.
+
+This is queried using `quotactl_fd` which needs Linux 5.14 or later and
+permission to make the syscall, which Docker's default seccomp profile blocks.
 
 :::
 
@@ -33,7 +35,6 @@ the current user (the process owner user) is queried as well.
 
   // If the block device does not have quotas enabled, this property will be null.
   "quota": {
-
     // Absolute limit on disk quota blocks alloc
     "blocks_limit_hard": 55000,
 
@@ -63,6 +64,6 @@ the current user (the process owner user) is queried as well.
 
 ## Errors
 
-| Code | Reason |
-| ---- | ------ |
-| -1 | Could not check space for given path. |
+| Code | Reason                                |
+| ---- | ------------------------------------- |
+| -1   | Could not check space for given path. |

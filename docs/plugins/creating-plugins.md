@@ -26,9 +26,9 @@ return {
 }
 ```
 
-This will print "Hello, world!" to the Porla log (stdout) every time the plugin
-is loaded. Reload the plugin from the plugin settings to see it happen multiple
-times.
+This will print "Hello, world!" to the Porla log at the info level every time
+the plugin is loaded. Reload the plugin from the plugin settings to see it
+happen multiple times.
 
 ## Configuration
 
@@ -40,7 +40,7 @@ _Any errors in parsing the config will fail the load._
 ```lua title="example-with-config.lua"
 return {
     init = function(config)
-        print("Hello, {}!", config.name)
+        print("Hello, " .. config.name .. "!")
     end
 }
 ```

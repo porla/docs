@@ -9,7 +9,7 @@ to run it in Linux environments using something like Systemd.
 
 ## Get started
 
-- Download the [latest release binary](https://github.com/porla/porla/releases/latest/download/porla).
+- Download the [latest release binary](https://github.com/porla/porla/releases/latest/download/porla-linux-amd64).
 - Either run the binary directly, or see below on how to run it as a service.
 
 ## Example Systemd unit
@@ -19,10 +19,12 @@ to run it in Linux environments using something like Systemd.
 Description=porla
 
 [Service]
-Environment=PORLA_DB=/var/lib/porla/porla.sqlite
+StateDirectory=porla
+Environment=PORLA_STATE_DIR=/var/lib/porla
+EnvironmentFile=/etc/porla/porla.env   # PORLA_SECRET_KEY=...
 ExecStart=/usr/bin/porla
-Group=porla
 User=porla
+Group=porla
 
 [Install]
 WantedBy=multi-user.target

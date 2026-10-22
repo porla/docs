@@ -12,7 +12,7 @@ Each version of Porla is released as a Docker image based on Alpine Linux.
 To give Porla a spin, just run the Docker image.
 
 ```shell
-docker run -p 1337:1337 ghcr.io/porla/porla
+docker run -p 1337:1337 -e PORLA_STATE_DIR=/var/lib/porla ghcr.io/porla/porla
 ```
 
 
@@ -25,7 +25,7 @@ Also, any downloads will have to be stored somewhere, and it is a good idea to
 mount a volume for downloads as well.
 
 ```shell
-docker run -d --name porla -p 1337:1337 -v /host/path:/dl -v /another/path:/var/lib/porla --restart=unless-stopped ghcr.io/porla/porla
+docker run -d --name porla -p 1337:1337 -e PORLA_STATE_DIR=/var/lib/porla -v /host/path:/dl -v /another/path:/var/lib/porla --restart=unless-stopped ghcr.io/porla/porla
 ```
 
 
@@ -41,7 +41,7 @@ services:
   porla:
     container_name: porla
     image: ghcr.io/porla/porla
-    #user : "1000:1000" # Uncomment this line if you want run Porla with a different PUID:PGID
+    environment: [PORLA_STATE_DIR=/var/lib/porla]
     ports:
       - "1337:1337"
     restart: unless-stopped

@@ -21,6 +21,8 @@ Gets a preset by its ID.
     "metadata": {},
     "category": null,
     "download_limit": null,
+    "flags": ["auto_managed", "paused"],
+    "flags_mask": ["auto_managed", "paused"],
     "max_connections": null,
     "max_uploads": null,
     "save_path": "/tmp",

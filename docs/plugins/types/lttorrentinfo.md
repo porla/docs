@@ -10,6 +10,8 @@ The `LtTorrentInfo` represents a the `info` section of a torrent file.
 
 The info hash.
 
+### <code>layout(): [LtFileStorage](./ltfilestorage.md)</code>
+
 ### `name(): string`
 
 <Since>v0.42.0</Since>

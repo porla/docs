@@ -18,6 +18,6 @@ Removes a preset.
 
 ## Errors
 
-| Code | Reason |
-| ---- | ------ |
-| -1 | A preset with the specified ID was not found. |
+| Code | Reason                                        |
+| ---- | --------------------------------------------- |
+| -1   | A preset with the specified ID was not found. |

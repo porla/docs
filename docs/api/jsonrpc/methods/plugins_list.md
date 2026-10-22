@@ -5,15 +5,14 @@ List all plugins.
 ## Request
 
 ```json
-{
-}
+{}
 ```
 
 ## Response
 
 ```json
 {
-  "plugins": [
+  "plugins": [
     {
       "id": 7,
       "path": "/tmp/plugins/skeleton",

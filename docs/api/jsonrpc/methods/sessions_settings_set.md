@@ -1,6 +1,6 @@
 # `sessions.settings.set`
 
-Updates the settings for a session.
+Updates the settings for a running session.
 
 Refer to the [libtorrent documentation](http://libtorrent.org/reference-Settings.html#settings_pack)
 for detailed information for each setting.
@@ -21,6 +21,12 @@ _Some settings like user agent, peer ID, etc cannot be updated_.
 ## Response
 
 ```json
-{
-}
+null
 ```
+
+## Errors
+
+| Code | Reason             |
+| ---- | ------------------ |
+| -1   | Session not found  |
+| -2   | Session not loaded |

@@ -20,6 +20,7 @@ Lists all sessions. Also includes their metadata and torrents count.
       "metadata": {
         "$color": "#ff00ff"
       },
+      // state is null if session is not loaded
       "state": {
         "is_listening": true,
         "is_paused": false,

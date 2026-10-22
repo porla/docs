@@ -8,7 +8,7 @@ Represents a TCP client.
 
 <Since>v0.42.0</Since>
 
-Closes the socket.
+Closes the socket. Pending callbacks gets an error.
 
 ### `connect(host: string, port: number, callback: function): void`
 
@@ -31,7 +31,8 @@ end)
 
 <Since>v0.42.0</Since>
 
-Reads any available data.
+Reads any available data. Returns at most 8192 bytes. EOF and failures arrive
+as `err` with `nil` data.
 
 #### Example
 
@@ -69,7 +70,7 @@ end)
 
 <Since>v0.42.0</Since>
 
-Begins a TLS handshake.
+Begins a TLS handshake. The TCP client needs to be connected first.
 
 #### Example
 
@@ -84,7 +85,7 @@ client:tls(function(err)
 end)
 ```
 
-### `write(data: string, callback?: function) void`
+### `write(data: string, callback?: function): void`
 
 <Since>v0.51.0</Since>
 

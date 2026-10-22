@@ -55,6 +55,14 @@ Pauses the session.
 
 Resumes the session.
 
+### `post_dht_stats(): void`
+
+<Since>v0.51.1</Since>
+
+### `post_session_stats(): void`
+
+<Since>v0.51.1</Since>
+
 ### <code>torrents(): [PoTorrentsHandle](./potorrentshandle.md)</code>
 
 <Since>v0.42.0</Since>

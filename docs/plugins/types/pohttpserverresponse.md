@@ -22,6 +22,10 @@ Finishes the HTTP response with the given data as body.
 
 Writes `data` to the HTTP response body.
 
+### `writeHeader(key: string, value: string): void`
+
+<Since>v0.42.0</Since>
+
 ### `writeStatus(status: string): void`
 
 <Since>v0.42.0</Since>

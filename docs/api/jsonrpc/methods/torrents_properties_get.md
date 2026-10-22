@@ -6,8 +6,8 @@ Gets properties for a torrent.
 
 ```json
 {
-    "info_hash": "aabb...",
-    "session_id": 8
+  "info_hash": "aabb...",
+  "session_id": 8
 }
 ```
 
@@ -15,14 +15,16 @@ Gets properties for a torrent.
 
 ```json
 {
-    // The download/upload bandwidth limit for this specific torrent.
-    // -1 is unlimited (but session may have limits).
-    "download_limit": -1,
-    "upload_limit": -1,
+  // The download/upload bandwidth limit for this specific torrent.
+  // -1 is unlimited (but session may have limits).
+  "download_limit": -1,
+  "upload_limit": -1,
 
-    // An array of all flags that are _set_.
-    "flags": ["auto_managed"],
+  // An array of all flags that are _set_.
+  "flags": ["apply_ip_filter", "auto_managed"],
 
-    "max_connections": 200,
-    "max_uploads": 8
+  // unlimited values for these return 16777215, not -1.
+  "max_connections": 16777215,
+  "max_uploads": 16777215
 }
+```

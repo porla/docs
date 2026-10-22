@@ -23,5 +23,5 @@ Adds one or more peers to a torrent.
 ## Response
 
 ```json
-true
+null
 ```

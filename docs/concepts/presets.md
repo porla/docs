@@ -20,3 +20,8 @@ If a default preset exists, and you pass another preset ID, the default preset
 will be applied first, and then the specified preset will be applied. This
 means you can have a default preset that sets some common settings like save
 path, and then specific presets that override the default preset.
+
+### Order
+
+The default preset applies first, then the chosen preset (preset_id, or preset
+by name), then the request's own values. The request wins.

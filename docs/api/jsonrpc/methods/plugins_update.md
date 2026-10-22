@@ -1,6 +1,12 @@
 # `plugins.update`
 
-Updates a plugin path, config or metadata.
+Updates a plugin path or config and reloads it.
+
+:::info
+
+Sending `null` as config will clear it.
+
+:::
 
 ## Request
 
@@ -8,14 +14,12 @@ Updates a plugin path, config or metadata.
 {
   "id": 8,
   "path": "/tmp/skeleton.lua",
-  "config": "return {}",
-  "metadata": {}
+  "config": "return {}"
 }
 ```
 
 ## Response
 
 ```json
-{
-}
+null
 ```

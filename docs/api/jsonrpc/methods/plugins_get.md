@@ -12,6 +12,8 @@ Gets details about the plugin with the specified ID.
 
 ## Response
 
+_Plugin configuration is only returned for user keys (JWT)_.
+
 ```json
 {
   "plugin": {
@@ -20,10 +22,14 @@ Gets details about the plugin with the specified ID.
     "name": "skeleton",
     "version": "0.1",
     "config": "return {}",
-    "metadata": {
-      "source": "github:porla-plugins/skeleton"
-    },
+    "metadata": {},
     "is_loaded": true
   }
 }
 ```
+
+## Errors
+
+| Code | Reason           |
+| ---- | ---------------- |
+| -1   | Plugin not found |

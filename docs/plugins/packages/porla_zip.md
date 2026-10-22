@@ -25,3 +25,9 @@ end
 -- prints the contents of test.txt
 print(files["test.txt"])
 ```
+
+:::warning
+
+The whole archive is decompressed into memory with no upper limit.
+
+:::

@@ -40,12 +40,18 @@ if some_session ~= nil then
 end
 ```
 
+### <code>get(name: string): [PoSessionHandle](../types/posessionhandle.md) | nil</code>
+
+<Since>v0.42.0</Since>
+
+Returns a session by its name.
 
 ### <code>list(): [PoSessionsIterator](../types/posessionsiterator.md)</code>
 
 <Since>v0.42.0</Since>
 
-Returns an iterator to let you loop through all loaded sessions.
+Returns an iterator to let you loop through all loaded sessions in ascending
+ID order.
 
 #### Example
 
@@ -74,5 +80,5 @@ for a specific session.
 local sessions = require("porla_sessions")
 local metrics  = sessions.metrics()
 
-print(metrics["tracker.num_queued_tracker_announces"].type) -- prints "counter"
+print(metrics["net.sent_payload_bytes"].type) -- prints "counter"
 ```

@@ -16,6 +16,5 @@ Reloading a plugin will unload it, then load it. To update the configuration
 ## Response
 
 ```json
-{
-}
+null
 ```

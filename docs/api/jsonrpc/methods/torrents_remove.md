@@ -2,12 +2,14 @@
 
 Removes a torrent from either the specified session, or the default session.
 
+The removal happens asynchronously after the response.
+
 ## Request
 
 ```json
 {
   // The info hash of the torrent to remove.
-  "info_hash": [ "abcdef0123456789abcd", null ],
+  "info_hash": ["abcdef0123456789abcd", null],
 
   // (Optional) The session ID that the info hash belongs to.
   "session_id": 3,

@@ -57,7 +57,7 @@ are never written and are not published.
 | ----------- | -------- | --------------------------- |
 | `plugin_id` | `number` | The ID of the added plugin. |
 
-Emitted when a plugin is added. A `plugin.loaded` event will follow it it then
+Emitted when a plugin is added. A `plugin.loaded` event will follow if it then
 loads.
 
 #### `plugin.loaded`
@@ -149,6 +149,10 @@ Emitted when a preset is removed.
 | `session`    | [`PoSessionHandle`](../types/posessionhandle.md) | The session that was added.  |
 
 Emitted when a session is added.
+
+#### `session.dht_stats`
+
+Fires once per DHT node every `timer_dht_stats` ms.
 
 #### `session.loaded`
 
@@ -270,7 +274,7 @@ Emitted periodically with session statistics.
 | `session`    | [`PoSessionHandle`](../types/posessionhandle.md) | The session.                                                                                                |
 | `info_hash`  | [`LtInfoHash`](../types/ltinfohash.md)           | The torrent info hash.                                                                                      |
 | `torrent`    | [`LtTorrentHandle`](../types/lttorrenthandle.md) | The torrent handle.                                                                                         |
-| `first`      | `boolean`                                        | `true` the first time this torrent finished, in this session downloaded any payload data for it to trigger. |
+| `first`      | `boolean`                                        | `true` the first time this torrent finished, if this session downloaded any payload data for it to trigger. |
 
 Emitted each time a torrent finishes - this can happen both due to downloading
 all pieces, rechecking, etc.
@@ -295,6 +299,21 @@ end)
 | `session`    | [`PoSessionHandle`](../types/posessionhandle.md) | The session.           |
 | `info_hash`  | [`LtInfoHash`](../types/ltinfohash.md)           | The torrent info hash. |
 | `torrent`    | [`LtTorrentHandle`](../types/lttorrenthandle.md) | The torrent handle.    |
+
+#### `torrent.need_cert`
+
+| Field        | Type                                             | Description            |
+| ------------ | ------------------------------------------------ | ---------------------- |
+| `session_id` | `number`                                         | The ID of the session. |
+| `session`    | [`PoSessionHandle`](../types/posessionhandle.md) | The session.           |
+| `info_hash`  | [`LtInfoHash`](../types/ltinfohash.md)           | The torrent info hash. |
+| `torrent`    | [`LtTorrentHandle`](../types/lttorrenthandle.md) | The torrent handle.    |
+
+Emitted when a torrent needs an SSL certificate.
+
+Call `event.torrent:set_ssl_certificate(...)` from the handler. It arrives
+before torrent.added for a torrent that has metadata, and after metadata for a
+magnet.
 
 #### `torrent.paused`
 

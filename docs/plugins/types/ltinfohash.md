@@ -24,3 +24,9 @@ a hybrid info hash.
 ```lua
 local hash = LtInfoHash("176de2e6724976a38d51d0a34d3c0503a2305e63")
 ```
+
+### Properties
+
+### `v1: string | nil`
+
+### `v2: string | nil`

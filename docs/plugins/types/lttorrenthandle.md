@@ -169,7 +169,7 @@ will be emitted when done (or failed).
 
 Use `options` to set extra flags on the move operation. Available flags are,
 
-- `always_replace_files`
+- `always_replace_files` (default)
 - `fail_if_exist`
 - `dont_replace`
 - `reset_save_path`
@@ -211,6 +211,8 @@ may be automatically resumed again.
 ### `post_piece_availability(): void`
 
 <Since>v0.42.0</Since>
+
+### `post_status(): void`
 
 ### `post_trackers(): void`
 
@@ -358,7 +360,7 @@ torrent.
 
 <Since>v0.42.0</Since>
 
-### `set_ssl_certificate_buffer(buffer: string, private_key: string, dh_params: string, passphrase: string)`
+### `set_ssl_certificate_buffer(buffer: string, private_key: string, dh_params: string)`
 
 <Since>v0.42.0</Since>
 
@@ -372,7 +374,7 @@ Sets the upload bandwidth limit for this torrent.
 
 <Since>v0.42.0</Since>
 
-### <code>torrent_file(): [LtTorrentFile](./lttorrentinfo.md) | nil</code>
+### <code>torrent_file(): [LtTorrentInfo](./lttorrentinfo.md) | nil</code>
 
 <Since>v0.42.0</Since>
 
@@ -400,7 +402,7 @@ Returns the upload bandwidth limit for this torrent.
 
 Returns a list of the URL seeds for this torrent.
 
-### <code>userdata(): [PoTorrentData](./potorrentdata.md)</code>
+### <code>userdata(): [PoTorrentData](./potorrentdata.md) | nil</code>
 
 <Since>v0.42.0</Since>
 

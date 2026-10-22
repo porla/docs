@@ -19,3 +19,11 @@ The major plugin API version.
 <Since>v0.42.0</Since>
 
 The minor plugin API version.
+
+### `args["state-dir"]: string`
+
+### `args["http-base-path"]: string`
+
+### `version: string`
+
+<Since>v0.46.0</Since>

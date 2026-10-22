@@ -1,6 +1,6 @@
 # `torrents.count`
 
-Get an overview of all torrents in all sessions. This method does not return
+Get an overview of all torrents in a single session. This method does not return
 any torrent-specific data, only various counts.
 
 These counts are used in the web UI to display the counts per various state.

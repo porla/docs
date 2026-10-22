@@ -101,9 +101,17 @@ bandwidth quota from the torrent rate limiter.
 
 <Since>v0.42.0</Since>
 
+### <code>errc: [PoError](./poerror.md) | nil</code>
+
+<Since>v0.44.0</Since>
+
 ### `finished_duration: number`
 
 <Since>v0.42.0</Since>
+
+### <code>flags: [LtTorrentFlags](./lttorrentflags.md)</code>
+
+<Since>v0.44.0</Since>
 
 ### <code>handle: [LtTorrentHandle](./lttorrenthandle.md)</code>
 
@@ -130,6 +138,10 @@ bandwidth quota from the torrent rate limiter.
 <Since>v0.42.0</Since>
 
 ### `last_download: number`
+
+<Since>v0.42.0</Since>
+
+### `last_seen_complete: number`
 
 <Since>v0.42.0</Since>
 
@@ -193,6 +205,18 @@ bandwidth quota from the torrent rate limiter.
 
 <Since>v0.42.0</Since>
 
+### `ratio: number`
+
+<Since>v0.46.0</Since>
+
+### `ratio_real: number`
+
+<Since>v0.46.0</Since>
+
+### <code>renamed_files: [LtRenamedFiles](./ltrenamedfiles.md)</code>
+
+<Since>v0.46.0</Since>
+
 ### `save_path: string`
 
 <Since>v0.42.0</Since>
@@ -204,6 +228,14 @@ bandwidth quota from the torrent rate limiter.
 ### `seeding_duration: number`
 
 <Since>v0.42.0</Since>
+
+### `state: string`
+
+<Since>v0.44.0</Since>
+
+### `storage_mode: string`
+
+<Since>v0.46.0</Since>
 
 ### `torrent_file: LtTorrentInfo | nil`
 
@@ -264,6 +296,10 @@ Fixed so it returns a correct LtTorrentInfo
 <Since>v0.42.0</Since>
 
 ### `upload_limit: number`
+
+<Since>v0.42.0</Since>
+
+### `upload_rate: number`
 
 <Since>v0.42.0</Since>
 

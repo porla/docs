@@ -20,6 +20,8 @@ Get a session by ID. This does not include the settings. For settings, use
     "name": "default",
     "is_default": true,
     "metadata": {},
+
+    // state is null if session is not loaded
     "state": {
       "is_listening": true,
       "is_paused": false,
@@ -28,3 +30,9 @@ Get a session by ID. This does not include the settings. For settings, use
   }
 }
 ```
+
+## Errors
+
+| Code | Reason            |
+| ---- | ----------------- |
+| -1   | Session not found |
