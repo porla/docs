@@ -21,7 +21,6 @@ Description=porla
 [Service]
 StateDirectory=porla
 Environment=PORLA_STATE_DIR=/var/lib/porla
-EnvironmentFile=/etc/porla/porla.env   # PORLA_SECRET_KEY=...
 ExecStart=/usr/bin/porla
 User=porla
 Group=porla

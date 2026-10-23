@@ -4,14 +4,10 @@ sidebar_position: 5
 
 # Configuration
 
-Porla can be configured in various ways - either via environment variables,
-command line arguments, or a configuration file.
+Porla can be configured either via environment variables or command line
+arguments.
 
 ## Environment variables
-
-### `PORLA_CONFIG_FILE`
-
-Path to a configuration file to use.
 
 ### `PORLA_DB`
 
@@ -19,6 +15,13 @@ Path to a database file to store state in. If the file does not exist, Porla
 will try to create it.
 
 _Can be set to `:memory:` if an in-memory database should be used._
+
+### `PORLA_HTTP_ALLOWED_HOSTS`
+
+If Porla runs behind a reverse proxy, set this to the host name you use to
+access Porla. Multiple hosts can be specified separated by a comma.
+
+_Only needed when Porla listens on 127.0.0.1_.
 
 ### `PORLA_HTTP_BASE_PATH`
 
@@ -35,6 +38,7 @@ _127.0.0.1_.
 ### `PORLA_HTTP_PORT`
 
 The HTTP port that Porla will listen on. If not set, will default to _1337_.
+Must be a value between 1-65535.
 
 Yes, really.
 
@@ -50,30 +54,20 @@ are,
  * `error`
  * `fatal`
 
-### `PORLA_SECRET_KEY`
-
-The secret key that Porla uses when generating and validating authentication
-tokens. Can be any string value, but a pass phrase or long random string is
-recommended.
-
-Use `openssl rand -hex 32` to generate one.
-
-If not set, Porla will generate a random secret key every application startup,
-meaning JWT values will be invalidated each time.
-
 ### `PORLA_STATE_DIR`
 
-The path to a directory where Porla will save its state.
+The path to a directory where Porla will save its state. It will be created if
+missing.
 
 ## Command line arguments
-
-### `--config-file`
-
-See [`PORLA_CONFIG_FILE`](#porla_config_file).
 
 ### `--db`
 
 See [`PORLA_DB`](#porla_db).
+
+### `--http-allowed-hosts`
+
+See [`PORLA_HTTP_ALLOWED_HOSTS`](#porla_http_allowed_hosts).
 
 ### `--http-base-path`
 
@@ -90,10 +84,6 @@ See [`PORLA_HTTP_PORT`](#porla_http_port).
 ### `--log-level`
 
 See [`PORLA_LOG_LEVEL`](#porla_log_level).
-
-### `--secret-key`
-
-See [`PORLA_SECRET_KEY`](#porla_secret_key).
 
 ### `--state-dir`
 

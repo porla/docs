@@ -2,6 +2,10 @@
 
 Gets details about the plugin with the specified ID.
 
+`name` and `version` come from the plugin's optional `plugin.json`, read while
+the plugin is loaded. Without one, `name` is the plugin's file or directory
+name and `version` is `null`.
+
 ## Request
 
 ```json
@@ -12,15 +16,15 @@ Gets details about the plugin with the specified ID.
 
 ## Response
 
-_Plugin configuration is only returned for user keys (JWT)_.
+_Plugin configuration is only returned for logged-in users, not API keys_.
 
 ```json
 {
   "plugin": {
     "id": 7,
-    "path": "/tmp/plugins/skeleton",
-    "name": "skeleton",
-    "version": "0.1",
+    "path": "/home/user/plugins/my-plugin",
+    "name": "My plugin",
+    "version": "1.2.0",
     "config": "return {}",
     "metadata": {},
     "is_loaded": true

@@ -30,6 +30,19 @@ This will print "Hello, world!" to the Porla log at the info level every time
 the plugin is loaded. Reload the plugin from the plugin settings to see it
 happen multiple times.
 
+## Name and version
+
+A plugin in a directory or a zip file can ship a `plugin.json` next to `plugin.lua`. Porla shows
+its name and version in the plugin list. It's optional: without it, the directory or file name is
+used, and single-file `.lua` plugins can't have one.
+
+```json title="plugin.json"
+{
+  "name": "My plugin",
+  "version": "1.2.0"
+}
+```
+
 ## Configuration
 
 Users can pass configuration to a plugin. This configuration must be valid Lua

@@ -19,7 +19,8 @@ Lists all API keys.
       "id": "abc...",
       "name": "autobrr",
       "created_at": 1893452400,
-      "expires_at": null
+      "expires_at": null,
+      "last_used_at": 1893452400
     }
   ]
 }

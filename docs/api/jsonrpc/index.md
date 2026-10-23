@@ -9,6 +9,9 @@ parts of Porla. most of the API requires [authentication](../auth.md); some
 methods like `sys.status`, `auth.init` and `auth.login` can be called without
 anonymously.
 
+Browser requests from another site, port or subdomain
+(`Sec-Fetch-Site: cross-site/same-site`) are rejected with HTTP 403.
+
 ## Data formats
 
 The JSONRPC API uses info hashes quite extensively. Porla will always return an

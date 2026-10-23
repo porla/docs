@@ -5,8 +5,8 @@
 Creates an API key with an optional expiry date.
 
 :::note
-This method requires a user JWT, meaning API keys cannot be used to create
-further API keys.
+This method requires a logged-in user, meaning API keys cannot be used to
+create further API keys.
 :::
 
 ## Request

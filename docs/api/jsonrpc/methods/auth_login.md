@@ -1,7 +1,7 @@
 # `auth.login`
 
-Logs in the given user and returns an authentication token (JWT). The token is
-valid for 24 hours and cannot be refreshed.
+Logs in the given user and returns a session token. The token has a sliding
+expiration of 30 days.
 
 For programmatic access, use API keys.
 
@@ -25,7 +25,7 @@ browser clients to support persistent logins without managing the token.
 
 ```json
 {
-  "token": "ey..."
+  "token": "porla_..."
 }
 ```
 
