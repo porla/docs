@@ -9,7 +9,8 @@ advanced customizations.
 
 ## Creating plugins
 
-See [creating plugins](./creating-plugins.md).
+See [creating plugins](./creating-plugins.md), and [editor setup](./editor-setup.md)
+for completion and type checks in your editor.
 
 ## Installing plugins
 
