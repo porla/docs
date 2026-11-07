@@ -54,6 +54,25 @@ are,
  * `error`
  * `fatal`
 
+The same entries are kept in memory for
+[`logs.list`](./api/jsonrpc/methods/logs_list.md).
+
+#### Log format
+
+<Changed in="v0.55.0">The log is logfmt; it was `[time] [thread] [level] message` in local time.</Changed>
+
+Porla logs to the console in [logfmt](https://brandur.org/logfmt), one line per
+entry: `ts` (RFC 3339 in UTC, with milliseconds), `level`, `component`, `msg`,
+then the entry's properties sorted by name. A value is quoted when it is empty
+or contains spaces, control characters, `=` or `"`, with `\n`, `\r`, `\t`, `\"`
+and `\\` escaped.
+
+```
+ts=2026-11-07T10:01:56.502Z level=info component=session msg="Torrent finished checking" session_id=1 session_name=default torrent=98c1270619618631a03379a786293ed8de60de4a
+```
+
+Log collectors such as Loki (`| logfmt`), Vector and Fluent Bit parse it as is.
+
 ### `PORLA_STATE_DIR`
 
 The path to a directory where Porla will save its state. It will be created if

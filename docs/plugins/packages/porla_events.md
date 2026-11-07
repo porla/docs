@@ -15,7 +15,8 @@ use to remove the handler.
 The callback is called with a single argument - an event table. All event
 tables include a `name` field with the name of the event.
 
-Raises an error if `event` is not a valid event name.
+Raises `invalid_params` if `event` is not a valid event name, or if `callback`
+isn't a function.
 
 #### Example
 

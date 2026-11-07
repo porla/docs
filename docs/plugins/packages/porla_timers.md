@@ -2,6 +2,12 @@
 
 Create various types of timers, such as one-shot, intervals and cron schedules.
 
+A missing callback raises `invalid_params`. Durations are whole milliseconds
+from 10 to 2147483647; a float with a whole value (`1.5 * 60 * 1000`, `1e3`) is
+fine, anything else raises `invalid_params`.
+
+<Changed in="v0.55.0">Whole-valued floats are accepted, values out of range raise instead of wrapping around, and a missing callback raises.</Changed>
+
 ## Exports
 
 ### <code>cron(expr: string, callback: function): [PoCancellable](../types/pocancellable.md)</code>

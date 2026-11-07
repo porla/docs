@@ -56,13 +56,15 @@ might be tricky. Here's the lookup order for finding a session.
 
 ## Errors
 
+<Changed in="v0.55.0">Adding one half of a hybrid torrent that is already in the session (for example its v1 magnet link) fails with -5; it used to fail later, as a `torrent.add_failed` event.</Changed>
+
 | Code | Reason                                                                                                |
 | ---- | ----------------------------------------------------------------------------------------------------- |
 | -1   | "Session not found", with data.session_id                                                             |
 | -2   | "Session not loaded" (with data.session_id), "Failed to parse 'ti'" or "Failed to parse 'magnet_uri'" |
 | -3   | "Either 'ti' or 'magnet_uri' must be set"                                                             |
 | -4   | missing info hash                                                                                     |
-| -5   | "Torrent already in session"                                                                          |
+| -5   | "Torrent already in session", also when one half of a hybrid torrent's hash matches one in it         |
 | -6   | "'save_path' missing"                                                                                 |
 | -7   | "Failed to add torrent to session", with data.what                                                    |
 | -8   | category, tags or metadata aren't valid UTF-8                                                         |

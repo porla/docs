@@ -25,6 +25,11 @@ Sending an info hash accepts the following,
  - a 64-character hex string (v2);
  - `[v1, null]`, `[null, v2]`, `[v1, v2]`
 
+A hybrid torrent (one with both a v1 and a v2 hash) is found by either half
+alone, so clients that only know the v1 hash can still address it.
+
+<Changed in="v0.55.0">A hybrid torrent was only found by both halves.</Changed>
+
 Invalid hex characters return `-32603 Internal error`, with `data` like "info
 hash ... contains invalid hex characters".
 

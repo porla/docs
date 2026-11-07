@@ -34,11 +34,16 @@ will be returned as `json.null` which is the same value as the global
 
 Use `json.array(tbl?)` to mark a Lua table as an array.
 
+JSON nested deeper than 256 levels returns `nil, err` with a `decode_error`.
+
+<Changed in="v0.55.0">The limit was 100 levels.</Changed>
+
 ### `json.encode(obj: object): string`
 
 <Since>v0.44.0</Since>
 
-Encodes the given Lua object to a JSON string.
+Encodes the given Lua object to a JSON string. Raises `invalid_params` for
+values nested deeper than 256 levels.
 
 ### `hex.decode(data: string): string`
 

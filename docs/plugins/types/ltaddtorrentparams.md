@@ -13,17 +13,27 @@ is handed over to the C++ side and it is converted to a real object.
 
 ### <code>from_buffer(buffer: string): LtAddTorrentParams | nil, [PoError](./poerror.md) | nil</code>
 
-Creates a params object from a torrent file buffer.
+Creates a params object from a torrent file buffer. Returns `nil, err` with a
+`decode_error` when the buffer isn't a valid torrent file.
+
+<Changed in="v0.55.0">The error code was `invalid_params`.</Changed>
 
 ### <code>from_magnet(uri: string): LtAddTorrentParams | nil, [PoError](./poerror.md) | nil</code>
 
-Creates a params object from a magnet URI.
+Creates a params object from a magnet URI. Returns `nil, err` with a
+`decode_error` when the URI isn't a valid magnet link.
+
+<Changed in="v0.55.0">The error code was `invalid_params`.</Changed>
 
 ### <code>from_path(path: string): LtAddTorrentParams | nil, [PoError](./poerror.md) | nil</code>
 
 <Since>v0.42.0</Since>
 
-Creates a params object from a file path.
+Creates a params object from a file path. Returns `nil, err` with an
+`io_error` when the file can't be read, and a `decode_error` when it isn't a
+valid torrent file.
+
+<Changed in="v0.55.0">Both error codes were `invalid_params`.</Changed>
 
 #### Example
 

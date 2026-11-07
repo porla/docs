@@ -72,6 +72,11 @@ end)
 
 Begins a TLS handshake. The TCP client needs to be connected first.
 
+Setup errors, such as an unreadable `ca_file`, go to the callback like any
+other error, after `tls` returns.
+
+<Changed in="v0.55.0">Setup errors called the callback before `tls` returned.</Changed>
+
 #### Example
 
 ```lua

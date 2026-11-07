@@ -46,19 +46,20 @@ end
 
 Returns a session by its name.
 
-### <code>list(): [PoSessionsIterator](../types/posessionsiterator.md)</code>
+### <code>list(): [PoSessionHandle](../types/posessionhandle.md)[]</code>
 
 <Since>v0.42.0</Since>
 
-Returns an iterator to let you loop through all loaded sessions in ascending
-ID order.
+<Changed in="v0.55.0">Returns an array; it returned an iterator function (`for session in sessions.list() do`).</Changed>
+
+Returns the loaded sessions in ascending ID order.
 
 #### Example
 
 ```lua
 local sessions = require("porla_sessions")
 
-for session in sessions.list() do
+for _, session in ipairs(sessions.list()) do
     print(session.name)
 end
 ```

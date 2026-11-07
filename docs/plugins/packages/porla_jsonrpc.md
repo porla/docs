@@ -15,6 +15,11 @@ an existing method.
 
 Registers a method with the name `method`.
 
+Raises `invalid_params` when `callback`, or a given `can_invoke`, isn't a
+function.
+
+<Changed in="v0.55.0">A `can_invoke` that isn't a function raises; before, it was ignored and only signed-in users could call the method.</Changed>
+
 #### Example
 
 ```lua

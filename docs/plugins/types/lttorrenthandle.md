@@ -74,7 +74,7 @@ _Raises an error if index isn't -1 or a valid tracker index._
 Forces a reannounce for this torrent.
 
 - `seconds` - how many seconds from now to issue the announce. 0 or nil is immediate.
-- `index` - which tracker to re-announce. -1 or nil is all.
+- `index` - which tracker to re-announce, 0-based. -1 or nil is all.
 - `flags` - `{ ignore_min_interval = boolean, high_priority = boolean }`, both are false by default.
 
 #### Example
@@ -84,6 +84,13 @@ Forces an immediate re-announce to all trackers in this torrent.
 ```lua
 th:force_reannounce(0, -1, { ignore_min_interval = true })
 ```
+
+:::warning
+
+`index` is 0-based, but [`trackers()`](#trackers-ltannounceentry) returns a
+1-based Lua array. Inside `for i, t in ipairs(th:trackers())`, pass `i - 1`.
+
+:::
 
 ### `force_recheck(): void`
 
@@ -315,6 +322,23 @@ Resumes peer connections for this torrent.
 <Since>v0.46.0</Since>
 
 Begins an async save resume data operation for this torrent.
+
+### `scrape_tracker(tracker?: number | string): void`
+
+<Since>v0.54.0</Since>
+
+Scrapes now: every tracker without an argument, the tracker at the 0-based
+`index` (raises `invalid_params` when out of range), or the tracker with this
+URL.
+
+:::warning
+
+The index is 0-based, but [`trackers()`](#trackers-ltannounceentry) returns a
+1-based Lua array, so `th:scrape_tracker(i)` inside
+`for i, t in ipairs(th:trackers())` scrapes the next tracker and raises on the
+last one. Pass `t.url` instead, or `i - 1`.
+
+:::
 
 ### `set_download_limit(val: number): void`
 
