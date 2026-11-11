@@ -95,17 +95,28 @@ for handle, status in torrents:list(only_large) do
 end
 ```
 
-### <code>remove(info_hash: [LtInfoHash](./ltinfohash.md)): void</code>
+### <code>remove(info_hash: [LtInfoHash](./ltinfohash.md), opts?: table): void</code>
 
 <Since>v0.42.0</Since>
+
+<Changed in="v0.55.0">A hybrid torrent was only found by both hashes.</Changed>
 
 Removes a torrent by its info hash. A hybrid torrent is also found by its v1 or
 v2 hash alone.
 
-<Changed in="v0.55.0">A hybrid torrent was only found by both hashes.</Changed>
+To remove files - pass `{ delete_files = true }`.
 
-### <code>remove(handle: [LtTorrentHandle](./lttorrenthandle.md)): void</code>
+### <code>remove(handle: [LtTorrentHandle](./lttorrenthandle.md), opts?: table): void</code>
 
 <Since>v0.42.0</Since>
 
 Removes a torrent given its handle.
+
+To remove files - pass `{ delete_files = true }`.
+
+#### Example
+
+```lua
+-- remove a torrent and also its files
+torrents:remove(th, { delete_files = true })
+```
